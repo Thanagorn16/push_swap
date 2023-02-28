@@ -1,29 +1,21 @@
 #include "push_swap.h"
 
-int main(int ac, char **av)
+char    **create_double(char **av)
 {
     int i;
     int j;
-    int k;
     int count;
-    int len;
-    char    **set;
     char    **temp;
-    char    *str;
-    char    **new_args;
+    char    **set;
 
-    if (ac < 2)
-        return (0);
-
-// check arguments
     i = 1;
     j = 0;
     count = 0;
-    while (av[i]) // big malloc
+    while (av[i]) // big malloc // this method check all the arguments at once that's why 2d array is made
     {
         j = 0;
-        new_args = ft_split(av[i], ' ');
-        while (new_args[j] != NULL)
+        temp = ft_split(av[i], ' ');
+        while (temp[j] != NULL)
         {
             j++;
             count++; //count the set of numbers after split
@@ -31,6 +23,26 @@ int main(int ac, char **av)
         i++;
     }
     set = (char **)malloc(sizeof(char *) * count);
+    if (!set)
+        return (NULL);
+    return (set);
+}
+
+int main(int ac, char **av)
+{
+    int i;
+    int j;
+    int k;
+    int len;
+    char    **set;
+    char    **temp;
+    char    *str;
+
+    if (ac < 2)
+        return (0);
+
+// check arguments
+    set = create_double(av);
     i = 1;
     j = 0;
     while (av[i])
@@ -42,20 +54,24 @@ int main(int ac, char **av)
         {
             str = ft_strdup(temp[k]);
             set[j] = (char *)malloc(sizeof(char) * ft_strlen(str) + 1); // small malloc
+            if (!set[j])
+                return (NULL);
             len = 0;
             while (str[len]) 
             {
                 set[j][len] = str[len];
                 len++;
             }
+            set[j][len] = '\0';
             j++;
             k++; // this is used to get out of the loop
         }
         i++;
     }
+    set[j] = NULL; // set the end of the array
     i = 0;
     while (set[i])
-        printf("%s\n", set[i++]);
+        printf("set:%s\n", set[i++]);
     // new_args = ft_strdup(av[i++]);
     // while (av[i])
     //     new_args = ft_strjoin(new_args, av[i++]);
