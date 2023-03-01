@@ -4,6 +4,7 @@
 #include <unistd.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include "../push_swap.h"
 
 typedef struct s_split
 {
@@ -12,11 +13,12 @@ typedef struct s_split
 	size_t	i;
 }	t_split;
 
-size_t	ft_strlen(const char *str);
-int ft_atoi(const char *str);
+void	ft_putstr_fd(char *s, int fd);
+void	double_free(char **arr);
 char	*ft_strdup(const char *str);
 char	*ft_strjoin(char const *str1, char const *str2);
-void	double_free(char **arr);
 char	**ft_split(char const *s, char c);
+int		ft_atoi(const char *str);
+size_t	ft_strlen(const char *str);
 
 #endif

@@ -9,9 +9,13 @@ int	ft_atoi(const char *str)
 	i = 0;
 	nev = 0;
 	temp = 0;
-	while (str[i] != '\0' && (str[i] == ' ' || str[i] == '\n' || str[i] == '\t' 
-			|| str[i] == '\v' || str[i] == '\f' || str[i] == '\r')) // skip spaces
+	while (str[i] == '+' || str[i] == '-') // check if there's a set of operator before the digit
+	{
 		i++;
+		if (i > 1)
+			is_err();
+	}
+	i = 0;
 	if (str[i] != '\0' && str[i] == '-') //check negative
 	{
 		nev = 1;
@@ -21,6 +25,8 @@ int	ft_atoi(const char *str)
 		i++;
 	while (str[i] != '\0' && str[i] >= '0' && str[i] <= '9') //convert to integer
 		temp = (temp * 10) + (str[i++] - '0');
+	if (str[i] == '+' || str[i] == '-') //check if there's operator after the digit
+		is_err();
 	if (nev == 1) //convert to nev
 		return (-temp);
 	return (temp);

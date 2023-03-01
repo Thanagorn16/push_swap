@@ -1,22 +1,28 @@
 #include "push_swap.h"
 
+void	is_err()
+{
+	ft_putstr_fd("Error\n", 2);
+	exit(1);
+}
+
 int check_digit(char **str) // check while the arguments are still strings
 {
-    int i;
-    int j;
-    char    *temp;
+	int i;
+	int j;
+	char    *temp;
 
-    i = 0;
-    j = 0;
-    temp = str[i];
-    while (str[i])
-    {
-        j = 0;
-        while (str[i][j] >= '0' && str[i][j] <= '9' || str[i][j] == '-' || str[i][j] == '+')
-            j++;
-        if (str[i][j] != '\0' && str[i][j] < '0' || str[i][j] > '9' && str[i][j] != '-' && str[i][j] != '+')
-            return (-1);
-        i++;
-    }
-    return (0);
+	i = 0;
+	j = 0;
+	temp = str[i];
+	while (str[i])
+	{
+		j = 0;
+		while (str[i][j] >= '0' && str[i][j] <= '9' || str[i][j] == '-' || str[i][j] == '+')
+			j++;
+		if (str[i][j] != '\0' && str[i][j] < '0' || str[i][j] > '9' && str[i][j] != '-' && str[i][j] != '+')
+			return (-1);
+		i++;
+	}
+	return (0);
 }
