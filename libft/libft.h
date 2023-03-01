@@ -18,7 +18,8 @@ void	double_free(char **arr);
 char	*ft_strdup(const char *str);
 char	*ft_strjoin(char const *str1, char const *str2);
 char	**ft_split(char const *s, char c);
-int		ft_atoi(const char *str);
+// int		ft_atoi(const char *str);
+long long	ft_atoi(const char *str);
 size_t	ft_strlen(const char *str);
 
 #endif

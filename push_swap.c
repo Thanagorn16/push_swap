@@ -73,41 +73,35 @@ int main(int ac, char **av)
 	int		i;
 	int		j;
 	int		temp;
-	int		*arr; // keep the value in heap (remain in the memory)
+	// int		*arr; // keep the value in heap (remain in the memory)
+	long long	*arr; // keep the value in heap (remain in the memory)
 	char	**set;
 
 	if (ac < 2)
 		return (0);
 
-// check argumentsj
+// check arguments
 	set = create_double(av);
 	set = copy_str(av, set);
 	if (check_digit(set) < 0)
 		is_err();
 	// convert char to int
 	i = 0;
-	arr = (int *)malloc(sizeof(int));
+	arr = (long long *)malloc(sizeof(long long));
 	while (set[i])
 	{
 		arr[i] = ft_atoi(set[i]);
 		i++;
 	}
 	double_free(set);
+
 	i = 0;
 	while (arr[i])
-		printf("%d\n", arr[i++]);
-	// check if there's the same number
-	// while (arr[i])
-	// {
-	// 	temp = arr[i];
-	// 	j = i;
-	// 	while (arr[i])
-	// 	{
-	// 		i++;
-	// 		if (temp == arr[i])
-	// 			is_err();
-	// 	}
-	// 	i = j;
-	// 	i++;
-	// }
+		printf("%lld\n", arr[i++]);
+	printf("-------------\n");
+
+	check_repeated_num(arr);
+	check_max_min(arr);
+	check_asceding_order(arr);
+	printf("end\n");
 }
