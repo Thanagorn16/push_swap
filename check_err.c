@@ -10,16 +10,21 @@ int check_digit(char **str) // check while the arguments are still strings
 {
 	int i;
 	int j;
-	char    *temp;
 
 	i = 0;
 	j = 0;
-	temp = str[i];
 	while (str[i])
 	{
 		j = 0;
 		while (str[i][j] >= '0' && str[i][j] <= '9' || str[i][j] == '-' || str[i][j] == '+')
+		{
+			if (ft_strlen(str[i]) == 1) //check if char is a single operator w/o the number after it
+			{
+				if (str[i][j] == '-' || str[i][j] == '+')
+					is_err();
+			}
 			j++;
+		}
 		if (str[i][j] != '\0' && str[i][j] < '0' || str[i][j] > '9' && str[i][j] != '-' && str[i][j] != '+')
 			return (-1);
 		i++;

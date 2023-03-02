@@ -70,12 +70,11 @@ char	**copy_str(char **av, char **set)
 
 int main(int ac, char **av)
 {
-	int		i;
-	int		j;
-	int		temp;
-	// int		*arr; // keep the value in heap (remain in the memory)
+	int			i;
 	long long	*arr; // keep the value in heap (remain in the memory)
-	char	**set;
+	char		**set;
+	t_list		*stack;
+	t_list		*tmp;
 
 	if (ac < 2)
 		return (0);
@@ -95,7 +94,7 @@ int main(int ac, char **av)
 	}
 	double_free(set);
 
-	i = 0;
+	i = 0; //check int malloc
 	while (arr[i])
 		printf("%lld\n", arr[i++]);
 	printf("-------------\n");
@@ -103,5 +102,22 @@ int main(int ac, char **av)
 	check_repeated_num(arr);
 	check_max_min(arr);
 	check_asceding_order(arr);
+
+	// create stack
+	i = 1;
+	stack = ft_lstnew(&arr[0]);
+	while (arr[i])
+	{
+		tmp = ft_lstnew(&arr[i]);
+		ft_lstadd_back(&stack, tmp);
+		i++;
+	}
+	sa_action(&stack);
+	// while (stack) // check stack
+	// {
+	// 	printf("stack:%lld\n", *((long long *)stack->content));
+	// 	stack = stack->next;
+	// }
+
 	printf("end\n");
 }

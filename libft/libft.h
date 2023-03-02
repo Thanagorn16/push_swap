@@ -15,11 +15,12 @@ typedef struct s_split
 
 void	ft_putstr_fd(char *s, int fd);
 void	double_free(char **arr);
+// void	ft_lstadd_back(t_list **lst, t_list *new);
 char	*ft_strdup(const char *str);
 char	*ft_strjoin(char const *str1, char const *str2);
 char	**ft_split(char const *s, char c);
-// int		ft_atoi(const char *str);
 long long	ft_atoi(const char *str);
 size_t	ft_strlen(const char *str);
+// t_list	*ft_lstnew(void *content);
 
 #endif
