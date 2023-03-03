@@ -71,10 +71,15 @@ char	**copy_str(char **av, char **set)
 int main(int ac, char **av)
 {
 	int			i;
+	int			size;
+	long long	a;
 	long long	*arr; // keep the value in heap (remain in the memory)
+	long long	*arr2;
 	char		**set;
 	t_list		*stack;
+	t_list		*stack2;
 	t_list		*tmp;
+	t_list		*tmp2;
 
 	if (ac < 2)
 		return (0);
@@ -84,21 +89,21 @@ int main(int ac, char **av)
 	set = copy_str(av, set);
 	if (check_digit(set) < 0)
 		is_err();
+	//check size of the set
+	size = 0;
+	while (set[size])
+		size++;
+		// printf("size:%s\n", set[size++]);
+	size++;
 	// convert char to int
 	i = 0;
-	arr = (long long *)malloc(sizeof(long long));
+	arr = (long long *)malloc(sizeof(long long) * size);
 	while (set[i])
 	{
 		arr[i] = ft_atoi(set[i]);
 		i++;
 	}
 	double_free(set);
-
-	i = 0; //check int malloc
-	while (arr[i])
-		printf("%lld\n", arr[i++]);
-	printf("-------------\n");
-
 	check_repeated_num(arr);
 	check_max_min(arr);
 	check_asceding_order(arr);
@@ -112,12 +117,54 @@ int main(int ac, char **av)
 		ft_lstadd_back(&stack, tmp);
 		i++;
 	}
-	sa_action(&stack);
+
+	//test actions
+	// sa_action(&stack);
 	// while (stack) // check stack
 	// {
 	// 	printf("stack:%lld\n", *((long long *)stack->content));
 	// 	stack = stack->next;
 	// }
+	// printf("-------------------\n");
 
+	// stack 2
+	i = 0;
+	a = 4;
+	arr2 = (long long *)malloc(sizeof(long long) * 3);
+	while (i < 3)
+	{
+		arr2[i] = a;
+		i++;
+		a++;
+	}
+	i = 1;
+	stack2 = ft_lstnew(&arr2[0]);
+	// printf("stack2:%lld\n", *((long long *)stack2->content));
+	while (arr2[i])
+	{
+		tmp2 = ft_lstnew(&arr2[i]);
+		ft_lstadd_back(&stack2, tmp2);
+		i++;
+	}
+	// sb_action(&stack2);
+	// while (stack2) // check stack
+	// {
+	// 	printf("stack2:%lld\n", *((long long *)stack2->content));
+	// 	stack2 = stack2->next;
+	// }
+
+	//ss action
+	ss_action(&stack, &stack2);
+	while (stack) // check stack
+	{
+		printf("stack:%lld\n", *((long long *)stack->content));
+		stack = stack->next;
+	}
+	printf("================\n");
+	while (stack2) // check stack
+	{
+		printf("stack2:%lld\n", *((long long *)stack2->content));
+		stack2 = stack2->next;
+	}
 	printf("end\n");
 }
