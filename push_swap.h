@@ -19,8 +19,11 @@ void	ft_lstadd_back(t_list **lst, t_list *new);
 void	sa_action(t_list **stack);
 void	sb_action(t_list **stack);
 void	ss_action(t_list **stack_a, t_list **stack_b);
-// void	sa_action(t_list *stack);
+void	ra_action(t_list **stack);
+void	rb_action(t_list **stack);
+void	rr_action(t_list **stack_a, t_list **stack_b);
 int		check_digit(char **str);
 t_list	*ft_lstnew(void *content);
+t_list	*ft_lstlast(t_list *lst);
 
 # endif

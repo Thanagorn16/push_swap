@@ -108,6 +108,10 @@ int main(int ac, char **av)
 	check_max_min(arr);
 	check_asceding_order(arr);
 
+	i = 0;
+	while (arr[i])
+		printf("num:%lld\n", arr[i++]);
+	printf("----------------\n");
 	// create stack
 	i = 1;
 	stack = ft_lstnew(&arr[0]);
@@ -119,7 +123,7 @@ int main(int ac, char **av)
 	}
 
 	//test actions
-	// sa_action(&stack);
+	// ra_action(&stack);
 	// while (stack) // check stack
 	// {
 	// 	printf("stack:%lld\n", *((long long *)stack->content));
@@ -137,6 +141,10 @@ int main(int ac, char **av)
 		i++;
 		a++;
 	}
+	arr2[i] = 0;
+	// i = 0;
+	// while (arr2[i])
+	// 	printf("num:%lld\n", arr2[i++]);
 	i = 1;
 	stack2 = ft_lstnew(&arr2[0]);
 	// printf("stack2:%lld\n", *((long long *)stack2->content));
@@ -146,7 +154,7 @@ int main(int ac, char **av)
 		ft_lstadd_back(&stack2, tmp2);
 		i++;
 	}
-	// sb_action(&stack2);
+	// rb_action(&stack2);
 	// while (stack2) // check stack
 	// {
 	// 	printf("stack2:%lld\n", *((long long *)stack2->content));
@@ -154,7 +162,7 @@ int main(int ac, char **av)
 	// }
 
 	//ss action
-	ss_action(&stack, &stack2);
+	rr_action(&stack, &stack2);
 	while (stack) // check stack
 	{
 		printf("stack:%lld\n", *((long long *)stack->content));
