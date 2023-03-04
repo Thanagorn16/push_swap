@@ -123,7 +123,7 @@ int main(int ac, char **av)
 	}
 
 	//test actions
-	// ra_action(&stack);
+	// rra_action(&stack);
 	// while (stack) // check stack
 	// {
 	// 	printf("stack:%lld\n", *((long long *)stack->content));
@@ -142,9 +142,9 @@ int main(int ac, char **av)
 		a++;
 	}
 	arr2[i] = 0;
-	// i = 0;
-	// while (arr2[i])
-	// 	printf("num:%lld\n", arr2[i++]);
+	i = 0;
+	while (arr2[i])
+		printf("num:%lld\n", arr2[i++]);
 	i = 1;
 	stack2 = ft_lstnew(&arr2[0]);
 	// printf("stack2:%lld\n", *((long long *)stack2->content));
@@ -154,15 +154,15 @@ int main(int ac, char **av)
 		ft_lstadd_back(&stack2, tmp2);
 		i++;
 	}
-	// rb_action(&stack2);
+	// rrb_action(&stack2);
 	// while (stack2) // check stack
 	// {
 	// 	printf("stack2:%lld\n", *((long long *)stack2->content));
 	// 	stack2 = stack2->next;
 	// }
 
-	//ss action
-	rr_action(&stack, &stack2);
+	// //ss action
+	pb_action(&stack, &stack2);
 	while (stack) // check stack
 	{
 		printf("stack:%lld\n", *((long long *)stack->content));
