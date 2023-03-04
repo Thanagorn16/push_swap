@@ -12,7 +12,7 @@ typedef struct s_list
 }	t_list;
 
 void	is_err();
-void	check_repeated_num();
+void	check_repeated_num(long long *arr);
 void	check_asceding_order(long long *arr);
 void	check_max_min(long long *arr);
 void	ft_lstadd_back(t_list **lst, t_list *new);
@@ -27,6 +27,7 @@ void	rrb_action(t_list **stack);
 void	rrr_action(t_list **stack_a, t_list **stack_b);
 void	pa_action(t_list **stack_a, t_list **stack_b);
 void	pb_action(t_list **stack_a, t_list **stack_b);
+void	three_numbers(t_list **stack);
 int		check_digit(char **str);
 t_list	*ft_lstnew(void *content);
 t_list	*ft_lstlast(t_list *lst);
