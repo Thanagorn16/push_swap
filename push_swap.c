@@ -112,6 +112,7 @@ int main(int ac, char **av)
 	while (arr[i])
 		printf("num:%lld\n", arr[i++]);
 	printf("----------------\n");
+
 	// create stack
 	i = 1;
 	stack = ft_lstnew(&arr[0]);
@@ -123,16 +124,17 @@ int main(int ac, char **av)
 	}
 
 	//test sort
-	three_numbers(&stack);
+	// three_numbers(&stack);
+	five_numbers(stack);
 
 	//test actions
 	// rra_action(&stack);
-	while (stack) // check stack
-	{
-		printf("stack:%lld\n", *((long long *)stack->content));
-		stack = stack->next;
-	}
-	printf("-------------------\n");
+	// while (stack) // check stack
+	// {
+	// 	printf("stack:%lld\n", *((long long *)stack->content));
+	// 	stack = stack->next;
+	// }
+	// printf("-------------------\n");
 
 	// stack 2
 	// i = 0;
