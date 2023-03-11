@@ -33,60 +33,44 @@ void	five_numbers(t_list **stack)
 	long long	num;
 	int			i;
 	t_list		*tmp;
+	t_list		*head;
+	t_list		*new;
 
-	i = 0;
-	tmp = (*stack);
+	head = (*stack); // keep head of stack
+	tmp = ft_lstnew(NULL); // this will result in having the first node as 0
+	while ((*stack)) // copy each node to new stack 'tmp'
+	{
+		num = *((long long *)(*stack)->content);
+		new = ft_lstnew((void *)num);
+		ft_lstadd_back(&tmp, new);
+		(*stack) = (*stack)->next;
+	}
+	(*stack) = head; // reset head of stack;
+	tmp = tmp->next;
+	head = tmp;
+	i = 1;
+	while (tmp)
+	{
+		tmp->index = i++;
+		printf("tmp:%lld\n", (long long)tmp->content);
+		printf("index:%d\n", (int)tmp->index);
+		tmp = tmp->next;
+	}
+	tmp = head;
+	// printf("new tmp:%lld\n", (long long)tmp->content);
+	// tmp->content = (void *) 22;
+	// printf("new tmp:%lld\n", (long long)tmp->content);
+	// printf("1111111\n");
 
-	
+	//test
+	// while (tmp)
+	// {
+	// 	printf("new:tmp:%lld\n", (long long)tmp->content);
+	// 	tmp = tmp->next;
+	// }
+	// while ((*stack))
+	// {
+	// 	printf("stack:%lld\n", *((long long *)(*stack)->content));
+	// 	(*stack) = (*stack)->next;
+	// }
 }
-// void	five_numbers(t_list **stack)
-// {
-// 	long long	num;
-// 	int			i;
-// 	t_list		*stack_tmp;
-// 	t_list		*tmp;
-
-// 	i = 0;
-// 	stack_tmp = (*stack);
-// 	tmp = stack_tmp;
-// 	*((long long *)tmp->content) = (long long) 22;
-// 	while (i > 0)
-// 	{
-// 		if ((*(long long *)tmp->content) > *((long long *)tmp->next->content))
-// 		{
-// 			num = *((long long *)tmp->content);
-// 			// printf("keep num:%lld\n", num);
-// 			// printf("current:%lld\n", *((long long *)tmp->content));
-// 			// printf("next node:%lld\n", *((long long *)tmp->next->content));
-// 			// printf("--------------");
-// 			tmp->content = tmp->next->content;
-// 			// printf("change to:%lld\n", *((long long *)tmp->content));
-// 			*((long long *)tmp->next->content) = num;
-// 			// printf("next:%lld\n", *((long long *)tmp->next->content));
-// 			// printf("------------ done --------\n");
-// 		}
-// 		i++;
-// 		printf("i:%d\n", i);
-// 		if (i == ft_lstsize(stack_tmp))
-// 		{
-// 			// printf("i:%d\n", i);
-// 			tmp->next = NULL;
-// 		}
-// 		tmp = tmp->next;
-// 		// i++;
-// 		// printf("out:%lld\n", *((long long *)tmp->next->content));
-// 		// stack_tmp = stack_tmp->next;
-// 	}
-
-// 	printf("before\n");
-// 	while (stack_tmp)
-// 	{
-// 		printf("tmp:%lld\n", *((long long *)stack_tmp->content));
-// 		stack_tmp = stack_tmp->next;
-// 	}
-// 	while (tmp)
-// 	{
-// 		printf("mytmp:%lld\n", *((long long *)tmp->content));
-// 		tmp = tmp->next;
-// 	}
-// }

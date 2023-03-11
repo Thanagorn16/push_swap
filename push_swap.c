@@ -125,7 +125,7 @@ int main(int ac, char **av)
 
 	//test sort
 	// three_numbers(&stack);
-	five_numbers(stack);
+	five_numbers(&stack);
 
 	//test actions
 	// rra_action(&stack);

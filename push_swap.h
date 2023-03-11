@@ -8,6 +8,7 @@
 typedef struct s_list
 {
 	void			*content;
+	int				index;
 	struct s_list	*next;
 }	t_list;
 
@@ -28,8 +29,7 @@ void	rrr_action(t_list **stack_a, t_list **stack_b);
 void	pa_action(t_list **stack_a, t_list **stack_b);
 void	pb_action(t_list **stack_a, t_list **stack_b);
 void	three_numbers(t_list **stack);
-// void	five_numbers(t_list **stack);
-void	five_numbers(t_list *stack);
+void	five_numbers(t_list **stack);
 int		check_digit(char **str);
 int		ft_lstsize(t_list *lst);
 t_list	*ft_lstnew(void *content);
