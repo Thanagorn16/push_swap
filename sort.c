@@ -28,9 +28,10 @@ void	three_numbers(t_list **stack)
 		rra_action(stack);
 }
 
-void	five_numbers(t_list **stack)
+t_list	*sort_copied_stack(t_list **stack)
 {
 	long long	num;
+	long long	tmp_num;
 	int			i;
 	t_list		*tmp;
 	t_list		*head;
@@ -49,18 +50,44 @@ void	five_numbers(t_list **stack)
 	tmp = tmp->next;
 	head = tmp;
 	i = 1;
-	while (tmp)
+	while (tmp) //sort new stack
 	{
-		tmp->index = i++;
-		printf("tmp:%lld\n", (long long)tmp->content);
-		printf("index:%d\n", (int)tmp->index);
+		if ((long long)tmp->content > (long long)tmp->next->content)
+		{
+			tmp_num = (long long)tmp->content;
+			tmp->content = tmp->next->content;
+			tmp->next->content = (void *) tmp_num;
+		}
 		tmp = tmp->next;
+		if (tmp->next == NULL)
+			break;
 	}
 	tmp = head;
-	// printf("new tmp:%lld\n", (long long)tmp->content);
-	// tmp->content = (void *) 22;
-	// printf("new tmp:%lld\n", (long long)tmp->content);
-	// printf("1111111\n");
+	return (tmp);
+}
+
+void	five_numbers(t_list **stack)
+{
+	int			i;
+	t_list		*tmp;
+	t_list		*head;
+
+	i = 1;
+	tmp = sort_copied_stack(stack);
+	head = (*stack);
+	while (tmp) // set index to original stack
+	{
+		while ((*stack))
+		{
+			if (*((long long *)(*stack)->content) == (long long)tmp->content)
+			{
+				(*stack)->index = i++;
+			}
+			(*stack) = (*stack)->next;
+		}
+		(*stack) = head;
+		tmp = tmp->next;
+	}
 
 	//test
 	// while (tmp)
@@ -70,7 +97,7 @@ void	five_numbers(t_list **stack)
 	// }
 	// while ((*stack))
 	// {
-	// 	printf("stack:%lld\n", *((long long *)(*stack)->content));
+	// 	printf("stack:%lld / index:%d\n", *((long long *)(*stack)->content), (int)(*stack)->index);
 	// 	(*stack) = (*stack)->next;
 	// }
 }
