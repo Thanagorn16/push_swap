@@ -28,11 +28,46 @@ void	three_numbers(t_list **stack)
 		rra_action(stack);
 }
 
+void	sort_tmp(t_list *tmp)
+{
+	long long	tmp_num;
+	long long	prev_num;
+	t_list		*head;
+
+	head = tmp;
+	while (tmp) //sort new stack
+	{
+		if ((long long)tmp->content > (long long)tmp->next->content) // first time sorting the stack until reaching NULL
+		{
+			tmp_num = (long long)tmp->content;
+			tmp->content = tmp->next->content;
+			tmp->next->content = (void *) tmp_num;
+		}
+		tmp = tmp->next;
+		if (tmp->next == NULL) // end the first sorting, then repeatly sort until the least num get to the top of the stack
+		{
+			tmp = head;
+			while (tmp)
+			{
+				if ((long long)tmp->content > (long long)tmp->next->content)
+				{
+					tmp = head;
+					sort_tmp(tmp);
+				}
+				tmp = tmp->next;
+				if (tmp->next == NULL)
+					break ; //break the sub loop
+			}
+			break; //break the main loop
+		}
+	}
+}
+
 t_list	*sort_copied_stack(t_list **stack)
 {
 	long long	num;
 	long long	tmp_num;
-	int			i;
+	long long	prev_num;
 	t_list		*tmp;
 	t_list		*head;
 	t_list		*new;
@@ -49,19 +84,7 @@ t_list	*sort_copied_stack(t_list **stack)
 	(*stack) = head; // reset head of stack;
 	tmp = tmp->next;
 	head = tmp;
-	i = 1;
-	while (tmp) //sort new stack
-	{
-		if ((long long)tmp->content > (long long)tmp->next->content)
-		{
-			tmp_num = (long long)tmp->content;
-			tmp->content = tmp->next->content;
-			tmp->next->content = (void *) tmp_num;
-		}
-		tmp = tmp->next;
-		if (tmp->next == NULL)
-			break;
-	}
+	sort_tmp(tmp);
 	tmp = head;
 	return (tmp);
 }
@@ -70,11 +93,13 @@ void	five_numbers(t_list **stack)
 {
 	int			i;
 	t_list		*tmp;
+	t_list		*head_tmp;
 	t_list		*head;
 
 	i = 1;
 	tmp = sort_copied_stack(stack);
 	head = (*stack);
+	head_tmp = tmp;
 	while (tmp) // set index to original stack
 	{
 		while ((*stack))
@@ -88,7 +113,21 @@ void	five_numbers(t_list **stack)
 		(*stack) = head;
 		tmp = tmp->next;
 	}
-
+	tmp = head_tmp;
+	// check index
+	i = 0;
+	while ((*stack))
+	{
+		if ((*stack)->index == 1)
+		{
+			i++;
+			break ;
+		}
+		i++;
+		(*stack) = (*stack)->next;
+	}
+	(*stack) = head;
+	// printf("index:%d\n", i);
 	//test
 	// while (tmp)
 	// {
