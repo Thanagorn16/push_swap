@@ -42,15 +42,16 @@ void	rr_action(t_list **stack_a, t_list **stack_b)
 	if (!stack_a || !stack_b)
 		return ;
 	// stack a
-	lst_node = ft_lstlast((*stack_a)); // get last node
-	tmp = (*stack_a); //copy head (3)
-	(*stack_a) = (*stack_a)->next; //stack = second node (-2)
-	lst_node->next = tmp; //
+	lst_node = ft_lstlast((*stack_a)); 
+	tmp = (*stack_a); 
+	(*stack_a) = (*stack_a)->next; 
+	lst_node->next = tmp; 
 	tmp->next = NULL;
 	// stack b
-	lst_node = ft_lstlast((*stack_b)); // get last node
-	tmp = (*stack_b); //copy head (3)
-	(*stack_b) = (*stack_b)->next; //stack = second node (-2)
-	lst_node->next = tmp; //
+	lst_node = ft_lstlast((*stack_b)); 
+	tmp = (*stack_b); 
+	(*stack_b) = (*stack_b)->next; 
+	lst_node->next = tmp; 
 	tmp->next = NULL;
+	write(1, "rr\n", 3);
 }
