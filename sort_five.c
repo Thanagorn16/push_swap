@@ -1,33 +1,5 @@
 #include "push_swap.h"
 
-void	three_numbers(t_list **stack)
-{
-	long long	top;
-	long long	mid;
-	long long	bot;
-
-	top = *((long long *)(*stack)->content);
-	mid = *((long long *)(*stack)->next->content);
-	bot = *((long long *)(*stack)->next->next->content);
-
-	if (top > mid && mid > bot) //case 2
-	{
-		sa_action(stack);
-		rra_action(stack);
-	}
-	else if (top < mid && top < bot) //case 4
-	{
-		sa_action(stack);
-		ra_action(stack);
-	}
-	else if (top > mid && top > bot) //case 3
-		ra_action(stack);
-	else if (top > mid && top < bot) // case 1
-		sa_action(stack);
-	else if (top < mid && top > bot) //case 5
-		rra_action(stack);
-}
-
 void	sort_tmp(t_list *tmp)
 {
 	long long	tmp_num;
@@ -89,6 +61,32 @@ t_list	*sort_copied_stack(t_list **stack)
 	return (tmp);
 }
 
+void	sort_five(t_list **stack, t_list *head)
+{
+	int	i;
+	t_list	*stack_b;
+
+	// check index
+	i = 0;
+	// stack_b = ft_lstnew(NULL);
+	while (ft_lstsize(stack_b) < 2)
+	{
+		while ((*stack))
+		{
+			if ((*stack)->index == 1 || (*stack)->index == 2) //get index1 position
+			{
+				i++;
+				// push_to_b(stack, stack_b, i);
+			}
+			i++;
+			(*stack) = (*stack)->next;
+		}
+		// (*stack) = head;
+	}
+	// (*stack) = head;
+	printf("index:%d\n", i);
+}
+
 void	five_numbers(t_list **stack)
 {
 	int			i;
@@ -115,19 +113,21 @@ void	five_numbers(t_list **stack)
 	}
 	tmp = head_tmp;
 	// check index
-	i = 0;
-	while ((*stack))
-	{
-		if ((*stack)->index == 1)
-		{
-			i++;
-			break ;
-		}
-		i++;
-		(*stack) = (*stack)->next;
-	}
-	(*stack) = head;
+	// sort_five(stack, head);
+	// i = 0;
+	// while ((*stack))
+	// {
+	// 	if ((*stack)->index == 1) //end the search
+	// 	{
+	// 		i++;
+	// 		break ;
+	// 	}
+	// 	i++;
+	// 	(*stack) = (*stack)->next;
+	// }
+	// (*stack) = head;
 	// printf("index:%d\n", i);
+
 	//test
 	// while (tmp)
 	// {
@@ -137,6 +137,35 @@ void	five_numbers(t_list **stack)
 	// while ((*stack))
 	// {
 	// 	printf("stack:%lld / index:%d\n", *((long long *)(*stack)->content), (int)(*stack)->index);
-	// 	(*stack) = (*stack)->next;
+	// 	(*stack) = (*stack)->prev;
 	// }
+	t_list	*my_lst;
+	t_list	*my_lst2;
+
+	my_lst = ft_lstnew((void *)12);
+	my_lst2 = ft_lstnew((void *)13);
+	printf("lst:%d\n", (int)my_lst->content);
+	printf("lst:%d\n", (int)my_lst->next);
+	printf("lst:%d\n", (int)my_lst->prev);
+	if (my_lst->prev == NULL)
+		printf("yes\n");
+	ft_lstadd_back(&my_lst, my_lst2);
+	while (my_lst)
+	{
+		// printf("in loop\n");
+		printf("lst:%d\n", (int)my_lst->content);
+		// printf("lst:%d\n", (int)my_lst->prev->content);
+		my_lst = my_lst->next;
+		printf("lst:%d\n", (int)my_lst->prev->content);
+		// my_lst = my_lst->next;
+	// if (my_lst->prev == NULL)
+	// 	printf("this is null\n");
+	}
+	if (my_lst == NULL)
+		printf("this is null\n");
+	if (!my_lst)
+		printf("still null\n");
+	my_lst = my_lst->prev;
+	printf("lst:%d\n", (int)my_lst->content);
+
 }
