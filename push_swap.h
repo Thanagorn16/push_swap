@@ -13,6 +13,8 @@ typedef struct s_list
 	struct s_list	*prev;
 }	t_list;
 
+void	printc(t_list **stack);
+void	printl(t_list **stack);
 void	is_err();
 void	check_repeated_num(long long *arr);
 void	check_asceding_order(long long *arr);
