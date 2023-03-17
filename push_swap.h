@@ -13,6 +13,7 @@ typedef struct s_list
 	struct s_list	*prev;
 }	t_list;
 
+void	printr(t_list **stack);
 void	printc(t_list **stack);
 void	printl(t_list **stack);
 void	is_err();

@@ -43,5 +43,4 @@ void	pb_action(t_list **stack_a, t_list **stack_b)
 	// // (*stack_b) = NULL;
 	// printf("aaaa\n");
 	// exit(1);
-	write(1, "pb\n", 3);
 }

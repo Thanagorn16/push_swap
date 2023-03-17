@@ -15,5 +15,18 @@ void	printl(t_list **stack)
 	{
 		printf("print stack:%lld / index:%d\n", *((long long *)(*stack)->content), (int)(*stack)->index);
 		(*stack) = (*stack)->next;
+		if ((*stack) == NULL)
+			break ;
+	}
+}
+
+void	printr(t_list **stack)
+{
+	while ((*stack)->content)
+	{
+		printf("print prev:%lld / index:%d\n", *((long long *)(*stack)->content), (int)(*stack)->index);
+		(*stack) = (*stack)->prev;
+		if ((*stack) == NULL)
+			break ;
 	}
 }
