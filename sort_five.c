@@ -61,6 +61,82 @@ t_list	*sort_copied_stack(t_list **stack)
 	return (tmp);
 }
 
+int	search_top(t_list **stack)
+{
+	int	top;
+
+	top = 0;
+	while ((*stack)) // traverse from top
+	{
+		// printf("loop no:%d\n", i);
+		if ((*stack)->index == 1 || (*stack)->index == 2) //get index1 position
+		{
+			// printc(stack);
+			top++;
+			printf("top:%d\n", top);
+			break ;
+		}
+		top++;
+		(*stack) = (*stack)->next;
+	}
+	return (top);
+}
+
+int	search_bot(t_list **stack)
+{
+	int	bot;
+
+	bot = 0;
+	while ((*stack)) // traverse from bot
+	{
+		printf("BOT search\n");
+		if ((*stack)->index == 1 || (*stack)->index == 2) //get index1 position
+		{
+			bot++;
+			printf("bot:%d\n", bot);
+			printc(stack);
+			break ;
+		}
+		bot++;
+		(*stack) = (*stack)->prev;
+	}
+	return (bot);
+}
+
+t_list	*push_to_b(int top, int bot, t_list **stack, t_list *head, t_list **stack_b)
+{
+	t_list	*top_stack;
+	t_list	*bot_stack;
+
+	if (bot < top)
+	{
+		(*stack) = head; // get original stack to execute the actions
+		while (bot > 0)
+		{
+			rra_action(stack);
+			bot--;
+		}
+		pb_action(stack, stack_b);
+		bot_stack = ft_lstlast((*stack)); // keep track after the actions
+		// printf("in bot < top\n");
+		return (bot_stack);
+	}
+	else if (top < bot)
+	{
+		(*stack) = head;
+		while (top > 0)
+		{
+			ra_action(stack);
+			top--;
+		}
+		pb_action(stack, stack_b);
+		top_stack = (*stack);
+		// printf("in top < bot\n");
+		return (top_stack);
+	}
+	return (bot_stack);
+}
+
 void	sort_five(t_list **stack, t_list *head)
 {
 	int	top;
@@ -87,19 +163,7 @@ void	sort_five(t_list **stack, t_list *head)
 			printf("get TOP_stack in:%d\n", i);
 			// printl(stack);
 		}
-		while ((*stack)) // traverse from top
-		{
-			// printf("loop no:%d\n", i);
-			if ((*stack)->index == 1 || (*stack)->index == 2) //get index1 position
-			{
-				// printc(stack);
-				top++;
-				printf("top:%d\n", top);
-				break ;
-			}
-			top++;
-			(*stack) = (*stack)->next;
-		}
+		top = search_top(stack);
 		top_stack = (*stack); // keep track of the stack start from the top
 		if (bot_stack->prev) // continue stack from the tracker
 		{
@@ -108,49 +172,23 @@ void	sort_five(t_list **stack, t_list *head)
 		}
 		else
 			(*stack) = lst_node;
-		while ((*stack)) // traverse from bot
-		{
-			printf("BOT search\n");
-			if ((*stack)->index == 1 || (*stack)->index == 2) //get index1 position
-			{
-				bot++;
-				printf("bot:%d\n", bot);
-				printc(stack);
-				break ;
-			}
-			bot++;
-			(*stack) = (*stack)->prev;
-		}
+		bot = search_bot(stack);
 		bot_stack = (*stack); // keep track of the stack start from the bottom
-		if (bot < top)
+		if (bot < top) // pushing to stack b
 		{
-			(*stack) = head; // get original stack to execute the actions
-			while (bot > 0)
-			{
-				rra_action(stack);
-				bot--;
-			}
-			pb_action(stack, &stack_b);
-			bot_stack = ft_lstlast((*stack)); // keep track after the actions
+			bot_stack = push_to_b(top, bot, stack, head, &stack_b);
 			// printf("in bot < top\n");
 		}
 		else if (top < bot)
 		{
-			(*stack) = head;
-			while (top > 0)
-			{
-				ra_action(stack);
-				top--;
-			}
-			pb_action(stack, &stack_b);
-			top_stack = (*stack);
-			printf("in top < bot\n");
+			bot_stack = push_to_b(top, bot, stack, head, &stack_b);
 		}
 		// break ;
 		// printf("size:%d\n", ft_lstsize(stack_b));
 		// printf("end the loop=========\n");
 		i++;
 	}
+	printf("out of the lopppppppppppp\n");
 	while (stack_b->content)
 	{
 		// printc(&stack_b);
