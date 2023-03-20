@@ -10,12 +10,11 @@ void	ra_action(t_list **stack)
 	lst_node = ft_lstlast((*stack)); // get last node
 	tmp = (*stack); //copy head (3)
 	(*stack) = (*stack)->next; //stack = second node (-2)
-	lst_node->next = tmp; //
-
-	// printf("stack_ra:%lld\n", *((long long *)(*stack)->content));
-	// printf("stack_ra:%lld\n", *((long long *)(*stack)->next));
-	// printf("tmp:%lld\n", *((long long *)tmp->next));
+	lst_node->next = tmp;
 	tmp->next = NULL;
+	// adjust prev
+	tmp->prev = lst_node;
+	(*stack)->prev = NULL;
 	write(1, "ra\n", 3);
 }
 
@@ -29,8 +28,12 @@ void	rb_action(t_list **stack)
 	lst_node = ft_lstlast((*stack)); // get last node
 	tmp = (*stack); //copy head (3)
 	(*stack) = (*stack)->next; //stack = second node (-2)
-	lst_node->next = tmp; //
+	lst_node->next = tmp;
 	tmp->next = NULL;
+	// adjust prev
+	tmp->prev = lst_node;
+	(*stack)->prev = NULL;
+	write(1, "ra\n", 3);
 	write(1, "rb\n", 3);
 }
 

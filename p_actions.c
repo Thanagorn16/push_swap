@@ -6,6 +6,7 @@ void	pa_action(t_list **stack_a, t_list **stack_b)
 
 	tmp = (*stack_b);
 	(*stack_b) = (*stack_b)->next;
+	(*stack_b)->prev = NULL; // set prev for the stack
 	tmp->next = (*stack_a);
 	(*stack_a) = tmp;
 	write(1, "pa\n", 3);
@@ -20,6 +21,7 @@ void	pb_action(t_list **stack_a, t_list **stack_b)
 
 	tmp = (*stack_a);
 	(*stack_a) = (*stack_a)->next;
+	(*stack_a)->prev = NULL; // set prev for the stack
 	tmp->next = (*stack_b);
 	(*stack_b) = tmp;
 	write(1, "pb\n", 3);

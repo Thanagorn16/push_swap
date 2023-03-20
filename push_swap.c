@@ -122,9 +122,19 @@ int main(int ac, char **av)
 		ft_lstadd_back(&stack, tmp);
 		i++;
 	}
-
+	// ra_action(&stack);
+	// printl(&stack);
+	// exit(1);
 	//test sort
 	// three_numbers(&stack);
+
+	// t_list	*bott;
+	// ra_action(&stack);
+	// printl(&stack);
+	// bott = ft_lstlast(stack);
+	// printr(&bott);
+	// exit(0);
+
 	five_numbers(&stack);
 
 	//test actions
