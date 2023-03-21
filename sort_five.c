@@ -182,21 +182,22 @@ void	sort_five(t_list **stack, t_list *head)
 	int	i;
 	t_list	*stack_b;
 	t_list	*lst_node;
-	t_list	*top_stack;
-	t_list	*bot_stack;
+	t_list	*top_stack = NULL;
+	t_list	*bot_stack = NULL;
 
 	// check index
 	stack_b = ft_lstnew(NULL);
 	lst_node = ft_lstlast((*stack));
 	i = 0;
-	// while (ft_lstsize(stack_b) < 2)
 	while (i < 2)
 	{
 		printf("start size:%d\n", ft_lstsize(stack_b));
 		top = 0;
 		bot = 0;
-		if (top_stack->next) // continue stack from the tracker
+		// if (top_stack->next) // continue stack from the tracker
+		if (top_stack) // continue stack from the tracker
 		{
+			printf("in top_stack\n");
 			(*stack) = top_stack;
 			printf("get TOP_stack in:%d\n", i);
 			// printl(stack);
@@ -205,10 +206,12 @@ void	sort_five(t_list **stack, t_list *head)
 		top = search_top(stack);
 		// top_stack = (*stack); // keep track of the stack start from the top
 		// top_stack = head; //!this does not keep track if bot < top, it will just start again with original stack
-		if (bot_stack->prev) // continue stack from the tracker
+		// if (bot_stack->prev) // continue stack from the tracker
+		if (bot_stack) // continue stack from the tracker
 		{
 			// (*stack) = bot_stack;
 			(*stack) = top_stack; //* to keep track of the stack if it went to the top < bot first
+			//? if the above line already existed, should the 'bot_stack' in top < bot be needed?
 			// printl(stack);
 			// exit(1);
 			// printf("get BOT_stack in:%d\n", i);
@@ -236,7 +239,6 @@ void	sort_five(t_list **stack, t_list *head)
 			// printf("this is size:%d\n", ft_lstsize((*stack)));
 			(*stack) = top_stack; // need this is since we have to keep track of the stack if it get into bot < top first
 			top_stack = push_to_b(top, bot, stack, head, &stack_b);
-			//!should do the same as top?
 			// printl(&top_stack);
 			// exit(0);
 			// printf("after pushing in top\n");
