@@ -30,3 +30,13 @@ void	printr(t_list **stack)
 			break ;
 	}
 }
+
+void	double_free_int(long long *arr)
+{
+	int	i;
+
+	i = 0;
+	while (arr[i])
+		free((void *)arr[i++]);
+	free(arr);
+}

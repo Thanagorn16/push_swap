@@ -21,7 +21,10 @@ int check_digit(char **str) // check while the arguments are still strings
 			if (ft_strlen(str[i]) == 1) //check if char is a single operator w/o the number after it
 			{
 				if (str[i][j] == '-' || str[i][j] == '+')
+				{
+					double_free(str);
 					is_err();
+				}
 			}
 			j++;
 		}
@@ -47,7 +50,10 @@ void	check_repeated_num(long long *arr)
 		{
 			i++;
 			if (temp == arr[i])
+			{
+				double_free_int(arr);
 				is_err();
+			}
 		}
 		i = j;
 		i++;
@@ -74,7 +80,10 @@ void	check_asceding_order(long long *arr)
 		else
 			break ;
 		if (size == 0)
+		{
+			double_free_int(arr);
 			exit(2);
+		}
 	}
 }
 
@@ -86,7 +95,10 @@ void	check_max_min(long long *arr)
 	while (arr[i])
 	{
 		if (arr[i] > 2147483647 || arr[i] < -2147483648)
+		{
+			double_free_int(arr);
 			is_err();
+		}
 		i++;
 	}
 }
