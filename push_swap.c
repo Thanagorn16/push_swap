@@ -98,6 +98,8 @@ int main(int ac, char **av)
 	// convert char to int
 	i = 0;
 	arr = (long long *)malloc(sizeof(long long) * size);
+	if (!arr)
+		return (0);
 	while (set[i])
 	{
 		arr[i] = ft_atoi(set[i]);
@@ -109,9 +111,9 @@ int main(int ac, char **av)
 	check_asceding_order(arr);
 
 	i = 0;
-	while (arr[i])
-		printf("num:%lld\n", arr[i++]);
-	printf("----------------\n");
+	// while (arr[i])
+	// 	printf("num:%lld\n", arr[i++]);
+	// printf("----------------\n");
 
 	// create stack
 	i = 1;
@@ -122,72 +124,8 @@ int main(int ac, char **av)
 		ft_lstadd_back(&stack, tmp);
 		i++;
 	}
-	// ra_action(&stack);
-	// printl(&stack);
-	// exit(1);
-	//test sort
-	// three_numbers(&stack);
-
-	// t_list	*bott;
-	// ra_action(&stack);
-	// printl(&stack);
-	// bott = ft_lstlast(stack);
-	// printr(&bott);
+	// printf("%d\n", size);
 	// exit(0);
-
-	five_numbers(&stack);
-
-	//test actions
-	// rra_action(&stack);
-	// while (stack) // check stack
-	// {
-	// 	printf("stack:%lld\n", *((long long *)stack->content));
-	// 	stack = stack->next;
-	// }
-	// printf("-------------------\n");
-
-	// stack 2
-	// i = 0;
-	// a = 4;
-	// arr2 = (long long *)malloc(sizeof(long long) * 3);
-	// while (i < 3)
-	// {
-	// 	arr2[i] = a;
-	// 	i++;
-	// 	a++;
-	// }
-	// arr2[i] = 0;
-	// i = 0;
-	// while (arr2[i])
-	// 	printf("num:%lld\n", arr2[i++]);
-	// i = 1;
-	// stack2 = ft_lstnew(&arr2[0]);
-	// // printf("stack2:%lld\n", *((long long *)stack2->content));
-	// while (arr2[i])
-	// {
-	// 	tmp2 = ft_lstnew(&arr2[i]);
-	// 	ft_lstadd_back(&stack2, tmp2);
-	// 	i++;
-	// }
-	// // rrb_action(&stack2);
-	// // while (stack2) // check stack
-	// // {
-	// // 	printf("stack2:%lld\n", *((long long *)stack2->content));
-	// // 	stack2 = stack2->next;
-	// // }
-
-	// // //ss action
-	// pb_action(&stack, &stack2);
-	// while (stack) // check stack
-	// {
-	// 	printf("stack:%lld\n", *((long long *)stack->content));
-	// 	stack = stack->next;
-	// }
-	// printf("================\n");
-	// while (stack2) // check stack
-	// {
-	// 	printf("stack2:%lld\n", *((long long *)stack2->content));
-	// 	stack2 = stack2->next;
-	// }
-	printf("end\n");
+	sort_stack(&stack, size - 1);
+	// printf("end\n");
 }

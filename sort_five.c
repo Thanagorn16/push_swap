@@ -68,43 +68,20 @@ int	search_top(t_list **stack)
 	top = 0;
 	while ((*stack)) // traverse from top
 	{
-		printf("TOP search\n");
+		// printf("TOP search\n");
 		if ((*stack)->index == 1 || (*stack)->index == 2) //get index1 position
 		{
 			top++;
-			printf("top:%d\n", top);
-			printc(stack);
+			// printf("top:%d\n", top);
+			// printc(stack);
 			break ;
 		}
 		top++;
-		// printf("not in if of top\n");
 		(*stack) = (*stack)->next;
 	}
 	printf("\n");
 	return (top);
 }
-
-// int	search_bot(t_list **stack)
-// {
-// 	int	bot;
-
-// 	bot = 0;
-// 	while ((*stack)) // traverse from bot
-// 	{
-// 		printf("BOT search\n");
-// 		if ((*stack)->index == 1 || (*stack)->index == 2) //get index1 position
-// 		{
-// 			bot++;
-// 			printf("bot:%d\n", bot);
-// 			printc(stack);
-// 			break ;
-// 		}
-// 		bot++;
-// 		(*stack) = (*stack)->prev;
-// 	}
-// 	printf("\n");
-// 	return (bot);
-// }
 
 int	search_bot(t_list *stack)
 {
@@ -113,12 +90,12 @@ int	search_bot(t_list *stack)
 	bot = 0;
 	while (stack) // traverse from bot
 	{
-		printf("BOT search\n");
+		// printf("BOT search\n");
 		if (stack->index == 1 || stack->index == 2) //get index1 position
 		{
 			bot++;
-			printf("bot:%d\n", bot);
-			printc(&stack);
+			// printf("bot:%d\n", bot);
+			// printc(&stack);
 			break ;
 		}
 		bot++;
@@ -191,15 +168,15 @@ void	sort_five(t_list **stack, t_list *head)
 	i = 0;
 	while (i < 2)
 	{
-		printf("start size:%d\n", ft_lstsize(stack_b));
+		// printf("start size:%d\n", ft_lstsize(stack_b));
 		top = 0;
 		bot = 0;
 		// if (top_stack->next) // continue stack from the tracker
 		if (top_stack) // continue stack from the tracker
 		{
-			printf("in top_stack\n");
+			// printf("in top_stack\n");
 			(*stack) = top_stack;
-			printf("get TOP_stack in:%d\n", i);
+			// printf("get TOP_stack in:%d\n", i);
 			// printl(stack);
 			// exit(1);
 		}
@@ -223,7 +200,7 @@ void	sort_five(t_list **stack, t_list *head)
 		// bot_stack = (*stack); // keep track of the stack start from the bottom //! no use of the line
 		if (bot < top || bot == top) // pushing to stack b
 		{
-			printf("in bot:%d < top:%d\n", bot, top);
+			// printf("in bot:%d < top:%d\n", bot, top);
 			// (*stack) = bot_stack;
 			// printr(stack);
 			// exit(1);
@@ -231,11 +208,11 @@ void	sort_five(t_list **stack, t_list *head)
 			top_stack = ft_lstfront(bot_stack);
 			// printl(&top_stack);
 			// exit(1);
-			printf("\n");
+			// printf("\n");
 		}
 		else if (top < bot)
 		{
-			printf("in top:%d < bot%d\n", top, bot);
+			// printf("in top:%d < bot%d\n", top, bot);
 			// printf("this is size:%d\n", ft_lstsize((*stack)));
 			(*stack) = top_stack; // need this is since we have to keep track of the stack if it get into bot < top first
 			top_stack = push_to_b(top, bot, stack, head, &stack_b);
@@ -250,34 +227,34 @@ void	sort_five(t_list **stack, t_list *head)
 			// printr(&bot_stack);
 			// printr(&top_stack);
 			// exit(1);
-			printf("\n");
+			// printf("\n");
 		}
 		// break ;
 		// printf("size:%d\n", ft_lstsize(stack_b));
 		// printf("end the loop=========\n");
 		i++;
 	}
-	printf("out of the lopppppppppppp\n");
+	// printf("out of the lopppppppppppp\n");
 	// three_numbers(stack);
 	// while (stack_b->next)
 	// {
 	// 	pa_action(stack, &stack_b);
 	// }
-	printf("done process\n");
-	while (stack_b->content)
-	{
-		// printc(&stack_b);
-		printf("in stack_b:%lld\n", *((long long *)stack_b->content));
-		stack_b = stack_b->next;
-		if (stack_b == NULL)
-			printf("null\n");
-		else
-			printf("no null\n");
-	}
-	// printl(&stack_b);
-	// (*stack) = head;
-	// printf("top:%d\n", top);
-	// printf("bot:%d\n", bot);
+	// printf("done process\n");
+	three_numbers(stack);
+	two_number(&stack_b);
+	pa_action(stack, &stack_b);
+	pa_action(stack, &stack_b);
+	// while (stack_b->content)
+	// {
+	// 	// printc(&stack_b);
+	// 	printf("in stack_b:%lld\n", *((long long *)stack_b->content));
+	// 	stack_b = stack_b->next;
+	// 	if (stack_b == NULL)
+	// 		printf("null\n");
+	// 	else
+	// 		printf("no null\n");
+	// }
 }
 
 void	five_numbers(t_list **stack)
@@ -305,44 +282,11 @@ void	five_numbers(t_list **stack)
 		tmp = tmp->next;
 	}
 	tmp = head_tmp;
-	// check index
 	sort_five(stack, head);
 
-	// t_list	*stack_b;
-	// stack_b = ft_lstnew(NULL);
-	// pb_action(stack, &stack_b);
-	// pb_action(stack, &stack_b);
-
-	// i = 0;
 	// while ((*stack))
 	// {
-	// 	if ((*stack)->index == 1) //end the search
-	// 	{
-	// 		i++;
-	// 		break ;
-	// 	}
-	// 	i++;
+	// 	printf("stack:%lld / index:%d\n", *((long long *)(*stack)->content), (int)(*stack)->index);
 	// 	(*stack) = (*stack)->next;
 	// }
-	// (*stack) = head;
-	// printf("index:%d\n", i);
-
-	//test
-	// printl(&stack_b);
-	// printc(&stack_b);
-	// stack_b = stack_b->next;
-	// printc(&stack_b);
-	// stack_b = stack_b->next;
-	// printc(&stack_b);
-	// printl(stack);
-	// while (tmp)
-	// {
-	// 	printf("new:tmp:%lld\n", (long long)tmp->content);
-	// 	tmp = tmp->next;
-	// }
-	while ((*stack))
-	{
-		printf("stack:%lld / index:%d\n", *((long long *)(*stack)->content), (int)(*stack)->index);
-		(*stack) = (*stack)->next;
-	}
 }
