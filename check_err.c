@@ -16,7 +16,7 @@ int check_digit(char **str) // check while the arguments are still strings
 	while (str[i])
 	{
 		j = 0;
-		while (str[i][j] >= '0' && str[i][j] <= '9' || str[i][j] == '-' || str[i][j] == '+')
+		while ((str[i][j] >= '0' && str[i][j] <= '9') || str[i][j] == '-' || str[i][j] == '+')
 		{
 			if (ft_strlen(str[i]) == 1) //check if char is a single operator w/o the number after it
 			{
@@ -25,7 +25,7 @@ int check_digit(char **str) // check while the arguments are still strings
 			}
 			j++;
 		}
-		if (str[i][j] != '\0' && str[i][j] < '0' || str[i][j] > '9' && str[i][j] != '-' && str[i][j] != '+')
+		if ((str[i][j] != '\0' && str[i][j] < '0') || (str[i][j] > '9' && str[i][j] != '-' && str[i][j] != '+'))
 			return (-1);
 		i++;
 	}

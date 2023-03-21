@@ -72,14 +72,14 @@ int main(int ac, char **av)
 {
 	int			i;
 	int			size;
-	long long	a;
+	// long long	a;
 	long long	*arr; // keep the value in heap (remain in the memory)
-	long long	*arr2;
+	// long long	*arr2;
 	char		**set;
 	t_list		*stack;
-	t_list		*stack2;
+	// t_list		*stack2;
 	t_list		*tmp;
-	t_list		*tmp2;
+	// t_list		*tmp2;
 
 	if (ac < 2)
 		return (0);
@@ -110,7 +110,7 @@ int main(int ac, char **av)
 	check_max_min(arr);
 	check_asceding_order(arr);
 
-	i = 0;
+	// i = 0;
 	// while (arr[i])
 	// 	printf("num:%lld\n", arr[i++]);
 	// printf("----------------\n");

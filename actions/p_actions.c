@@ -1,4 +1,4 @@
-#include "push_swap.h"
+#include "action.h"
 
 void	pa_action(t_list **stack_a, t_list **stack_b)
 {
@@ -14,10 +14,10 @@ void	pa_action(t_list **stack_a, t_list **stack_b)
 
 void	pb_action(t_list **stack_a, t_list **stack_b)
 {
-	t_list	*tmp_a;
-	t_list	*tmp_b;
+	// t_list	*tmp_a;
+	// t_list	*tmp_b;
 	t_list	*tmp;
-	t_list	*lst_node;
+	// t_list	*lst_node;
 
 	tmp = (*stack_a);
 	(*stack_a) = (*stack_a)->next;

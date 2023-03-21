@@ -4,12 +4,19 @@ NAME = push_swap
 
 LIBFT_PATH = libft/
 
-SWAP_SRCS = pipex.c pipex_utils.c
+ACTIONS_PATH = actions/
 
-LIBFT_SRCS = ft_strlen.c ft_strjoin_path.c ft_split.c ft_strtrim.c \
-			ft_putstr_fd.c ft_strdup.c ft_strncmp.c
+SWAP_SRCS = ft_lstadd_back.c ft_lstsize.c sort_five.c util.c \
+			ft_lstfront.c sort_three.c ft_lstlast.c push_swap.c sort_two.c \
+			check_err.c ft_lstnew.c sorting.c
 
-SRCS = $(PIPE_SRCS) $(addprefix $(LIBFT_PATH), $(LIBFT_SRCS))
+LIBFT_SRCS = ft_strlen.c ft_split.c ft_putstr_fd.c ft_strdup.c ft_atoi.c
+
+ACTIONS_SRCS = s_actions.c r_actions.c rr_actions.c p_actions.c
+
+SRCS = $(SWAP_SRCS)\
+			$(addprefix $(ACTIONS_PATH), $(ACTIONS_SRCS))\
+			$(addprefix $(LIBFT_PATH), $(LIBFT_SRCS))
 
 OBJS = $(SRCS:.c=.o)
 
@@ -20,8 +27,6 @@ all: $(NAME)
 
 $(NAME): $(OBJS)
 	gcc $(OBJS) -o $(NAME)
-
-bonus: all
 
 clean:
 	rm -f $(OBJS)

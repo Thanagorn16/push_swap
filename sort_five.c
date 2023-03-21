@@ -3,7 +3,6 @@
 void	sort_tmp(t_list *tmp)
 {
 	long long	tmp_num;
-	long long	prev_num;
 	t_list		*head;
 
 	head = tmp;
@@ -38,8 +37,6 @@ void	sort_tmp(t_list *tmp)
 t_list	*sort_copied_stack(t_list **stack)
 {
 	long long	num;
-	long long	tmp_num;
-	long long	prev_num;
 	t_list		*tmp;
 	t_list		*head;
 	t_list		*new;
@@ -79,7 +76,7 @@ int	search_top(t_list **stack)
 		top++;
 		(*stack) = (*stack)->next;
 	}
-	printf("\n");
+	// printf("\n");
 	return (top);
 }
 
@@ -101,7 +98,7 @@ int	search_bot(t_list *stack)
 		bot++;
 		stack = stack->prev;
 	}
-	printf("\n");
+	// printf("\n");
 	return (bot);
 }
 
@@ -110,6 +107,8 @@ t_list	*push_to_b(int top, int bot, t_list **stack, t_list *head, t_list **stack
 	t_list	*top_stack;
 	t_list	*bot_stack;
 
+	top_stack = NULL;
+	bot_stack = NULL;
 	if (bot < top || bot == top) // also in the case of equal distance
 	{
 		// printl(stack);
@@ -159,9 +158,11 @@ void	sort_five(t_list **stack, t_list *head)
 	int	i;
 	t_list	*stack_b;
 	t_list	*lst_node;
-	t_list	*top_stack = NULL;
-	t_list	*bot_stack = NULL;
+	t_list	*top_stack;
+	t_list	*bot_stack;
 
+	top_stack = NULL;
+	bot_stack = NULL;
 	// check index
 	stack_b = ft_lstnew(NULL);
 	lst_node = ft_lstlast((*stack));
