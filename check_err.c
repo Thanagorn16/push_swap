@@ -51,7 +51,7 @@ void	check_repeated_num(long long *arr)
 			i++;
 			if (temp == arr[i])
 			{
-				double_free_int(arr);
+				// double_free_int(arr);
 				is_err();
 			}
 		}
@@ -60,16 +60,11 @@ void	check_repeated_num(long long *arr)
 	}
 }
 
-void	check_asceding_order(long long *arr)
+void	check_asceding_order(long long *arr, int size)
 {
 	int	i;
-	int	size;
-
 	i = 0;
-	size = 0;
-	while (arr[size])
-		size++;
-	size -= 1;
+	size -= 1; //should loop less than the actual size by 1
 	while (size > 0)
 	{
 		if (arr[i] < arr[i + 1])
@@ -81,7 +76,7 @@ void	check_asceding_order(long long *arr)
 			break ;
 		if (size == 0)
 		{
-			double_free_int(arr);
+			// double_free_int(arr);
 			exit(2);
 		}
 	}
@@ -96,7 +91,7 @@ void	check_max_min(long long *arr)
 	{
 		if (arr[i] > 2147483647 || arr[i] < -2147483648)
 		{
-			double_free_int(arr);
+			// double_free_int(arr);
 			is_err();
 		}
 		i++;

@@ -19,7 +19,7 @@ void	printc(t_list **stack);
 void	printl(t_list **stack);
 void	is_err();
 void	check_repeated_num(long long *arr);
-void	check_asceding_order(long long *arr);
+void	check_asceding_order(long long *arr, int size);
 void	check_max_min(long long *arr);
 void	double_free_int(long long *arr);
 void	ft_lstadd_back(t_list **lst, t_list *new);

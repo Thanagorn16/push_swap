@@ -69,6 +69,32 @@ char	**copy_str(char **av, char **set)
 	return (set);
 }
 
+int	get_size(char **av)
+{
+	int i;
+	int j;
+
+	i = 0;
+	j = 0;
+	while (av[i])
+	{
+		j = 0;
+		// if (strlen(av[i]) > 1)
+		// {
+
+		// }
+		while ((av[i][j] >= '0' && av[i][j] <= '9') || av[i][j] == '-' || av[i][j] == '+')
+		{
+			
+			j++;
+		}
+		if ((av[i][j] != '\0' && av[i][j] < '0') || (av[i][j] > '9' && av[i][j] != '-' && av[i][j] != '+'))
+			return (-1);
+		i++;
+	}
+	return (0);
+}
+
 int main(int ac, char **av)
 {
 	int			i;
@@ -80,7 +106,8 @@ int main(int ac, char **av)
 
 	if (ac < 2)
 		return (0);
-
+	// printf("len:%zu\n", ft_strlen(av[1]));
+	// exit(1);
 // check arguments
 	set = create_double(av);
 	set = copy_str(av, set);
@@ -93,7 +120,6 @@ int main(int ac, char **av)
 	size = 0;
 	while (set[size])
 		size++;
-		// printf("size:%s\n", set[size++]);
 	size++;
 	// convert char to int
 	i = 0;
@@ -106,16 +132,10 @@ int main(int ac, char **av)
 		i++;
 	}
 	double_free(set);
-	// double_free_int(arr);
-	// i = 0;
-	// free(arr);
-	// while (arr[i])
-	// 	printf("%lld\n", arr[i++]);
-	exit(0); //! exit here
+	size--;
 	check_repeated_num(arr);
 	check_max_min(arr);
-	check_asceding_order(arr);
-
+	check_asceding_order(arr, size);
 	// i = 0;
 	// while (arr[i])
 	// 	printf("num:%lld\n", arr[i++]);
