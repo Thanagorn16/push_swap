@@ -10,6 +10,8 @@ void	three_numbers(t_list **stack)
 	mid = *((long long *)(*stack)->next->content);
 	bot = *((long long *)(*stack)->next->next->content);
 
+	if (top < mid && mid < bot) //case of ascending order after sort five
+		return ;
 	if (top > mid && mid > bot) //case 2
 	{
 		sa_action(stack);

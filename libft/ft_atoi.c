@@ -10,7 +10,7 @@ long long	ft_atoi(const char *str)
 	nev = 0;
 	temp = 0;
 	// printf("atoi:%s\n", str);
-	while (str[i] == '+' || str[i] == '-') // check if there's a set of operator before the digit
+	while (str[i] == '+' || str[i] == '-') // check if there's a set of operators before the digit
 	{
 		i++;
 		if (i > 1)
