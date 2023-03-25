@@ -6,5 +6,7 @@ void	sort_stack(t_list **stack, int size)
 		three_numbers(stack);
 	else if (size == 5)
 		five_numbers(stack);
+	else
+		sort_big_stack(stack, size);
 	// printl(stack);
 }

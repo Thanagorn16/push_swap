@@ -12,7 +12,7 @@ int main(int ac, char **av)
 	t_list		*stack;
 	t_list		*tmp;
 
-	if (ac < 2 || av[1][0] == '\0')
+	if (ac <= 2 && av[1][0] == '\0') // case of "" as an argument
 		exit(0);
 // check arguments
 	sz = check_digit(av);
@@ -36,17 +36,14 @@ int main(int ac, char **av)
 			arr[k++] = ft_atoi(set[j++]);
 		double_free(set);
 	}
-	// i = 0;
-	// while (i < sz)
-	// 	printf("num:%lld\n", arr[i++]);
-	// exit(0);
-	// i = 0;
-	// while (i < sz)
-	// 	printf("num:%lld\n", arr[i++]);
-	// exit(1);
 	check_asceding_order(arr, sz);
 	check_repeated_num(arr);
 	check_max_min(arr);
+	if (sz == 1) // case of 1 element
+		exit(0);
+	// printf("here\n");
+	// if (ac <= 2 && is_arg != 1)
+	// 	exit(0);
 	// i = 0;
 	// while (arr[i])
 	// 	printf("num:%lld\n", arr[i++]);
