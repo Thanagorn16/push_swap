@@ -19,6 +19,12 @@ int check_digit(char **str) // check while the arguments are still strings
 	while (str[i])
 	{
 		arg = ft_split(str[i], ' ');
+		// printf("here:%s\n", arg[0]);
+		if (!arg[0])
+		{
+			// printf("11111111\n");
+			return (0);
+		}
 		if (arg[k])
 		j = 0;
 		k = 0;
@@ -44,7 +50,6 @@ int check_digit(char **str) // check while the arguments are still strings
 		{
 			double_free(arg);
 			is_err();
-			// return (-1);
 		}
 		double_free(arg);
 		size++;
@@ -52,52 +57,28 @@ int check_digit(char **str) // check while the arguments are still strings
 	}
 	return (size);
 }
-// int check_digit(char **str) // check while the arguments are still strings
-// {
-// 	int i;
-// 	int j;
 
-// 	i = 0;
-// 	j = 0;
-// 	while (str[i])
-// 	{
-// 		j = 0;
-// 		while ((str[i][j] >= '0' && str[i][j] <= '9') || str[i][j] == '-' || str[i][j] == '+')
-// 		{
-// 			if (ft_strlen(str[i]) == 1) //check if char is a single operator w/o the number after it
-// 			{
-// 				if (str[i][j] == '-' || str[i][j] == '+')
-// 				{
-// 					double_free(str);
-// 					is_err();
-// 				}
-// 			}
-// 			j++;
-// 		}
-// 		if ((str[i][j] != '\0' && str[i][j] < '0') || (str[i][j] > '9' && str[i][j] != '-' && str[i][j] != '+'))
-// 			return (-1);
-// 		i++;
-// 	}
-// 	return (0);
-// }
-
-void	check_repeated_num(long long *arr)
+// void	check_repeated_num(long long *arr)
+void	check_repeated_num(long long *arr, int size)
 {
 	int	i;
 	int	j;
 	int	temp;
 
 	i = 0;
-	while (arr[i])
+	// while (arr[i])
+	// printf("size:%d\n", size);
+	while (i < size)
 	{
 		temp = arr[i];
 		j = i;
-		while (arr[i])
+		// while (arr[i])
+		while (i < size - 1)
 		{
 			i++;
 			if (temp == arr[i])
 			{
-				// double_free_int(arr);
+				// printf("yes\n");
 				is_err();
 			}
 		}
@@ -122,8 +103,6 @@ void	check_asceding_order(long long *arr, int size)
 			break ;
 		if (size == 0)
 		{
-			// printf("in ascending\n");
-			// double_free_int(arr);
 			exit(0);
 		}
 	}
@@ -138,7 +117,6 @@ void	check_max_min(long long *arr)
 	{
 		if (arr[i] > 2147483647 || arr[i] < -2147483648)
 		{
-			// double_free_int(arr);
 			is_err();
 		}
 		i++;
