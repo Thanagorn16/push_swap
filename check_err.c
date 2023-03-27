@@ -58,7 +58,6 @@ int check_digit(char **str) // check while the arguments are still strings
 	return (size);
 }
 
-// void	check_repeated_num(long long *arr)
 void	check_repeated_num(long long *arr, int size)
 {
 	int	i;
@@ -108,12 +107,12 @@ void	check_asceding_order(long long *arr, int size)
 	}
 }
 
-void	check_max_min(long long *arr)
+void	check_max_min(long long *arr, int size)
 {
 	int	i;
 
 	i = 0;
-	while (arr[i])
+	while (i < size)
 	{
 		if (arr[i] > 2147483647 || arr[i] < -2147483648)
 		{
