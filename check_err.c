@@ -25,11 +25,11 @@ int check_digit(char **str) // check while the arguments are still strings
 			// printf("11111111\n");
 			return (0);
 		}
-		if (arg[k])
 		j = 0;
 		k = 0;
 		while ((arg[k][j] >= '0' && arg[k][j] <= '9') || arg[k][j] == '-' || arg[k][j] == '+')
 		{
+			// printf("in while\n");
 			if (ft_strlen(arg[k]) == 1) //check if char is a single operator w/o the number after it
 			{
 				if (arg[k][j] == '-' || arg[k][j] == '+')
@@ -46,6 +46,7 @@ int check_digit(char **str) // check while the arguments are still strings
 				size++;
 			}
 		}
+		// printf("out while\n");
 		if ((arg[k][j] != '\0' && arg[k][j] < '0') || (arg[k][j] > '9' && arg[k][j] != '-' && arg[k][j] != '+'))
 		{
 			double_free(arg);
@@ -55,6 +56,7 @@ int check_digit(char **str) // check while the arguments are still strings
 		size++;
 		i++;
 	}
+	// printf("out\n");
 	return (size);
 }
 
