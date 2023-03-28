@@ -1,90 +1,54 @@
 #include "push_swap.h"
 
-void	is_err()
+void	process_digit(char **arg, int *size, int *k, int *j)
 {
-	ft_putstr_fd("Error\n", 2);
-	exit(0);
-}
-
-void	process_digit(char **arg, int size)
-{
-	int	j;
-	int	k;
-
-	j = 0;
-	k = 0;
-	while ((arg[k][j] >= '0' && arg[k][j] <= '9') || arg[k][j] == '-' || arg[k][j] == '+')
-	{
-		if (ft_strlen(arg[k]) == 1) //check if char is a single operator w/o the number after it
+		while ((arg[*k][*j] >= '0' && arg[*k][*j] <= '9') 
+				|| arg[*k][*j] == '-' || arg[*k][*j] == '+')
 		{
-			if (arg[k][j] == '-' || arg[k][j] == '+')
+			if (ft_strlen(arg[*k]) == 1) //check if char is a single operator w/o the number after it
 			{
-				double_free(arg);
-				is_err();
-			}
-		}
-		j++;
-		if (!arg[k][j] && arg[k + 1]) // check if the end of string and check if there's next str in arg
-		{
-			k++;
-			j = 0;
-			size++;
-		}
-	}
-	if ((arg[k][j] != '\0' && arg[k][j] < '0') || (arg[k][j] > '9' && arg[k][j] != '-' && arg[k][j] != '+'))
-	{
-		double_free(arg);
-		is_err();
-	}
-}
-
-int check_digit(char **str) // check while the arguments are still strings
-{
-	int i;
-	int j;
-	int k;
-	int	size;
-	char	**arg;
-
-	i = 1;
-	size = 0;
-	while (str[i])
-	{
-		arg = ft_split(str[i], ' ');
-		if (!arg[0])
-		{
-			return (0);
-		}
-		j = 0;
-		k = 0;
-		while ((arg[k][j] >= '0' && arg[k][j] <= '9') || arg[k][j] == '-' || arg[k][j] == '+')
-		{
-			if (ft_strlen(arg[k]) == 1) //check if char is a single operator w/o the number after it
-			{
-				if (arg[k][j] == '-' || arg[k][j] == '+')
+				if (arg[*k][*j] == '-' || arg[*k][*j] == '+')
 				{
 					double_free(arg);
 					is_err();
 				}
 			}
-			j++;
-			if (!arg[k][j] && arg[k + 1]) // check if the end of string and check if there's next str in arg
+			(*j)++;
+			if (!arg[*k][*j] && arg[*k + 1]) // check if the end of string and check if there's next str in arg
 			{
-				k++;
-				j = 0;
-				size++;
+				(*k)++;
+				*j = 0;
+				(*size)++;
 			}
 		}
-		if ((arg[k][j] != '\0' && arg[k][j] < '0') || (arg[k][j] > '9' && arg[k][j] != '-' && arg[k][j] != '+'))
+}
+
+int check_digit(char **str) // check while the arguments are still strings
+{
+	char	**arg;
+	t_list	pw;
+
+	pw.i = 1;
+	pw.size = 0;
+	while (str[pw.i])
+	{
+		arg = ft_split(str[pw.i], ' ');
+		if (!arg[0])
+			return (0);
+		pw.j = 0;
+		pw.k = 0;
+		process_digit(arg, &pw.size, &pw.k, &pw.j);
+		if ((arg[pw.k][pw.j] != '\0' && arg[pw.k][pw.j] < '0') 
+			|| (arg[pw.k][pw.j] > '9' && arg[pw.k][pw.j] != '-' && arg[pw.k][pw.j] != '+'))
 		{
 			double_free(arg);
 			is_err();
 		}
 		double_free(arg);
-		size++;
-		i++;
+		pw.size++;
+		pw.i++;
 	}
-	return (size);
+	return (pw.size);
 }
 
 void	check_repeated_num(long long *arr, int size)
@@ -94,21 +58,15 @@ void	check_repeated_num(long long *arr, int size)
 	int	temp;
 
 	i = 0;
-	// while (arr[i])
-	// printf("size:%d\n", size);
 	while (i < size)
 	{
 		temp = arr[i];
 		j = i;
-		// while (arr[i])
 		while (i < size - 1)
 		{
 			i++;
 			if (temp == arr[i])
-			{
-				// printf("yes\n");
 				is_err();
-			}
 		}
 		i = j;
 		i++;
@@ -130,9 +88,7 @@ void	check_asceding_order(long long *arr, int size)
 		else
 			break ;
 		if (size == 0)
-		{
 			exit(0);
-		}
 	}
 }
 
@@ -144,9 +100,7 @@ void	check_max_min(long long *arr, int size)
 	while (i < size)
 	{
 		if (arr[i] > 2147483647 || arr[i] < -2147483648)
-		{
 			is_err();
-		}
 		i++;
 	}
 }

@@ -31,12 +31,8 @@ void	printr(t_list **stack)
 	}
 }
 
-void	double_free_int(long long *arr)
+void	is_err()
 {
-	int	i;
-
-	i = 0;
-	while (arr[i])
-		free((void *)arr[i++]);
-	free(arr);
+	ft_putstr_fd("Error\n", 2);
+	exit(0);
 }
