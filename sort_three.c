@@ -20,7 +20,6 @@ void	sort_three(t_list **stack, long long top, long long mid, long long bot)
 		sa_action(stack);
 	else if (top < mid && top > bot) //case 5
 		rra_action(stack);
-
 }
 
 void	three_numbers(t_list **stack)
