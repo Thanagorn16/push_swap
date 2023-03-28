@@ -34,6 +34,7 @@ void	three_numbers(t_list **stack);
 void	five_numbers(t_list **stack);
 void	sort_big_stack();
 void	sort_stack(t_list **stack, int size);
+void	sort_tmp(t_list *tmp);
 int		check_digit(char **str);
 int		ft_lstsize(t_list *lst);
 t_list	*ft_lstnew(void *content);

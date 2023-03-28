@@ -1,5 +1,20 @@
 #include "push_swap.h"
 
+void	keep_sorting(t_list *tmp, t_list *head)
+{
+	while (tmp)
+	{
+		if ((long long)tmp->content > (long long)tmp->next->content)
+		{
+			tmp = head;
+			sort_tmp(tmp);
+		}
+		tmp = tmp->next;
+		if (tmp->next == NULL)
+			break ; //break the sub loop
+	}
+}
+
 void	sort_tmp(t_list *tmp)
 {
 	long long	tmp_num;
@@ -18,17 +33,7 @@ void	sort_tmp(t_list *tmp)
 		if (tmp->next == NULL) // end the first sorting, then repeatly sort until the least num get to the top of the stack
 		{
 			tmp = head;
-			while (tmp)
-			{
-				if ((long long)tmp->content > (long long)tmp->next->content)
-				{
-					tmp = head;
-					sort_tmp(tmp);
-				}
-				tmp = tmp->next;
-				if (tmp->next == NULL)
-					break ; //break the sub loop
-			}
+			keep_sorting(tmp, head);
 			break; //break the main loop
 		}
 	}
@@ -104,9 +109,7 @@ t_list	*push_to_b(int top, int bot, t_list **stack, t_list *head, t_list **stack
 	if (bot < top) // also in the case of equal distance
 	{
 		if (ft_lstsize((*stack_b)) == 1) //reset stack to be used for the first action
-		{
 			(*stack) = head;
-		}
 		while (bot > 0)
 		{
 			rra_action(stack);
