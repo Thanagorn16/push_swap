@@ -6,6 +6,38 @@ void	is_err()
 	exit(0);
 }
 
+void	process_digit(char **arg, int size)
+{
+	int	j;
+	int	k;
+
+	j = 0;
+	k = 0;
+	while ((arg[k][j] >= '0' && arg[k][j] <= '9') || arg[k][j] == '-' || arg[k][j] == '+')
+	{
+		if (ft_strlen(arg[k]) == 1) //check if char is a single operator w/o the number after it
+		{
+			if (arg[k][j] == '-' || arg[k][j] == '+')
+			{
+				double_free(arg);
+				is_err();
+			}
+		}
+		j++;
+		if (!arg[k][j] && arg[k + 1]) // check if the end of string and check if there's next str in arg
+		{
+			k++;
+			j = 0;
+			size++;
+		}
+	}
+	if ((arg[k][j] != '\0' && arg[k][j] < '0') || (arg[k][j] > '9' && arg[k][j] != '-' && arg[k][j] != '+'))
+	{
+		double_free(arg);
+		is_err();
+	}
+}
+
 int check_digit(char **str) // check while the arguments are still strings
 {
 	int i;
@@ -19,17 +51,14 @@ int check_digit(char **str) // check while the arguments are still strings
 	while (str[i])
 	{
 		arg = ft_split(str[i], ' ');
-		// printf("here:%s\n", arg[0]);
 		if (!arg[0])
 		{
-			// printf("11111111\n");
 			return (0);
 		}
 		j = 0;
 		k = 0;
 		while ((arg[k][j] >= '0' && arg[k][j] <= '9') || arg[k][j] == '-' || arg[k][j] == '+')
 		{
-			// printf("in while\n");
 			if (ft_strlen(arg[k]) == 1) //check if char is a single operator w/o the number after it
 			{
 				if (arg[k][j] == '-' || arg[k][j] == '+')
@@ -46,7 +75,6 @@ int check_digit(char **str) // check while the arguments are still strings
 				size++;
 			}
 		}
-		// printf("out while\n");
 		if ((arg[k][j] != '\0' && arg[k][j] < '0') || (arg[k][j] > '9' && arg[k][j] != '-' && arg[k][j] != '+'))
 		{
 			double_free(arg);
@@ -56,7 +84,6 @@ int check_digit(char **str) // check while the arguments are still strings
 		size++;
 		i++;
 	}
-	// printf("out\n");
 	return (size);
 }
 
