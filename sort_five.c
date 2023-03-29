@@ -1,5 +1,22 @@
 #include "push_swap.h"
 
+t_list	*push_to_top_b(int top, int bot, t_list **stack, t_list *head, t_list **stack_b)
+{
+	t_list	*top_stack;
+
+	top_stack = NULL;
+	if (ft_lstsize((*stack_b)) == 1) //reset stack to be used for the first action
+		(*stack) = head;
+	while (top > 1 && bot != 1 && top != 1)
+	{
+		ra_action(stack);
+		top--;
+	}
+	pb_action(stack, stack_b);
+	top_stack = (*stack);
+	return (top_stack);
+}
+
 t_list	*push_to_b(int top, int bot, t_list **stack, t_list *head, t_list **stack_b)
 {
 	t_list	*top_stack;
@@ -7,7 +24,7 @@ t_list	*push_to_b(int top, int bot, t_list **stack, t_list *head, t_list **stack
 
 	top_stack = NULL;
 	bot_stack = NULL;
-	if (bot < top) // also in the case of equal distance
+	if (bot < top)
 	{
 		if (ft_lstsize((*stack_b)) == 1) //reset stack to be used for the first action
 			(*stack) = head;
@@ -21,19 +38,8 @@ t_list	*push_to_b(int top, int bot, t_list **stack, t_list *head, t_list **stack
 		return (bot_stack);
 	}
 	else if (top < bot || bot == top)
-	{
-		if (ft_lstsize((*stack_b)) == 1) //reset stack to be used for the first action
-			(*stack) = head;
-		while (top > 1 && bot != 1 && top != 1)
-		{
-			ra_action(stack);
-			top--;
-		}
-		pb_action(stack, stack_b);
-		top_stack = (*stack);
-		return (top_stack);
-	}
-	return (bot_stack);
+		top_stack = push_to_top_b(top, bot, stack, head, stack_b);
+	return (top_stack);
 }
 
 void	sort_five(t_list **stack, t_list *head)
@@ -73,7 +79,7 @@ void	sort_five(t_list **stack, t_list *head)
 		{
 			(*stack) = top_stack; // need this is since we have to keep track of the stack if it get into bot < top first
 			top_stack = push_to_b(top, bot, stack, head, &stack_b);
-			bot_stack = ft_lstlast(top_stack); //! this will move stack to the last node which won't work properly when pushing.
+			bot_stack = ft_lstlast(top_stack);
 			// ! do we need the above line if we only need to check the top_stack then assign stack = top_stack?
 		}
 		i++;
