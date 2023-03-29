@@ -8,7 +8,7 @@ ACTIONS_PATH = actions/
 
 SWAP_SRCS = ft_lstadd_back.c ft_lstsize.c sort_five.c util.c \
 			ft_lstfront.c sort_three.c ft_lstlast.c push_swap.c sort_two.c \
-			check_err.c ft_lstnew.c sorting.c sort_big_stack.c
+			check_err.c ft_lstnew.c sorting.c sort_big_stack.c sort_five_utils.c \
 
 LIBFT_SRCS = ft_strlen.c ft_split.c ft_putstr_fd.c ft_strdup.c ft_atoi.c
 

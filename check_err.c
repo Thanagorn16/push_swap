@@ -2,7 +2,7 @@
 
 void	process_digit(char **arg, int *size, int *k, int *j)
 {
-		while ((arg[*k][*j] >= '0' && arg[*k][*j] <= '9') 
+		while ((arg[*k][*j] >= '0' && arg[*k][*j] <= '9')
 				|| arg[*k][*j] == '-' || arg[*k][*j] == '+')
 		{
 			if (ft_strlen(arg[*k]) == 1) //check if char is a single operator w/o the number after it
@@ -38,7 +38,7 @@ int check_digit(char **str) // check while the arguments are still strings
 		pw.j = 0;
 		pw.k = 0;
 		process_digit(arg, &pw.size, &pw.k, &pw.j);
-		if ((arg[pw.k][pw.j] != '\0' && arg[pw.k][pw.j] < '0') 
+		if ((arg[pw.k][pw.j] != '\0' && arg[pw.k][pw.j] < '0')
 			|| (arg[pw.k][pw.j] > '9' && arg[pw.k][pw.j] != '-' && arg[pw.k][pw.j] != '+'))
 		{
 			double_free(arg);

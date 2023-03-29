@@ -37,6 +37,8 @@ void	sort_stack(t_list **stack, int size);
 void	sort_tmp(t_list *tmp);
 int		check_digit(char **str);
 int		ft_lstsize(t_list *lst);
+int		search_top(t_list **stack);
+int		search_bot(t_list *stack);
 t_list	*ft_lstnew(void *content);
 t_list	*ft_lstlast(t_list *lst);
 t_list	*ft_lstfront(t_list *lst);
