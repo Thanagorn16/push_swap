@@ -37,12 +37,17 @@ typedef struct s_swp
 	int				j;
 	int				k;
 	int				size;
+	int				top;
+	int				bot;
 	long long		*arr; // keep the value in heap (remain in the memory)
 	char			**set;
 	// struct s_list	*next;
 	// struct s_list	*prev;
 	t_list			*head;
 	t_list			*stack_b;
+	t_list			*lst_node;
+	t_list			*top_stack;
+	t_list			*bot_stack;
 }	t_swp;
 
 void	printr(t_list **stack);
