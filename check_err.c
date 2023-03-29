@@ -26,7 +26,7 @@ void	process_digit(char **arg, int *size, int *k, int *j)
 int check_digit(char **str) // check while the arguments are still strings
 {
 	char	**arg;
-	t_list	pw;
+	t_swp	pw;
 
 	pw.i = 1;
 	pw.size = 0;

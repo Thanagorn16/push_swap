@@ -8,17 +8,42 @@
 
 typedef struct s_list
 {
-	void			*content;
-	int				index;
+	void		*content;
+	int			index;
+	struct s_list	*next;
+	struct s_list	*prev;
+}	t_list;
+
+// typedef struct s_list
+// {
+// 	void			*content;
+// 	int				index;
+// 	int				i;
+// 	int				j;
+// 	int				k;
+// 	int				size;
+// 	long long		*arr; // keep the value in heap (remain in the memory)
+// 	char			**set;
+// 	struct s_list	*next;
+// 	struct s_list	*prev;
+// 	t_swap			*head;
+// 	t_swap			*stack_b;
+// }	t_list;
+typedef struct s_swp
+{
+	// void			*content;
+	// int				index;
 	int				i;
 	int				j;
 	int				k;
 	int				size;
 	long long		*arr; // keep the value in heap (remain in the memory)
 	char			**set;
-	struct s_list	*next;
-	struct s_list	*prev;
-}	t_list;
+	// struct s_list	*next;
+	// struct s_list	*prev;
+	t_list			*head;
+	t_list			*stack_b;
+}	t_swp;
 
 void	printr(t_list **stack);
 void	printc(t_list **stack);

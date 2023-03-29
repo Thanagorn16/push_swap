@@ -2,7 +2,7 @@
 
 long long	*create_arr(char **av, int sz)
 {
-	t_list		pswp;
+	t_swp		pswp;
 
 	pswp.i = 1;
 	pswp.k = 0;
