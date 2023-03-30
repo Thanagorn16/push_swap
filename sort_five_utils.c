@@ -11,7 +11,11 @@ void	keep_sorting(t_list *tmp, t_list *head)
 		}
 		tmp = tmp->next;
 		if (tmp->next == NULL)
+		{
+			// tmp = head;
+			// free_stack(tmp);
 			break ; //break the sub loop
+		}
 	}
 }
 
@@ -47,7 +51,7 @@ t_list	*sort_copied_stack(t_list **stack)
 	t_list		*new;
 
 	head = (*stack); // keep head of stack
-	tmp = ft_lstnew(NULL); // this will result in having the first node as 0
+	tmp = ft_lstnew(NULL); // this will result in having the first node as 0 //!use pw to keep this instead
 	while ((*stack)) // copy each node to new stack 'tmp'
 	{
 		num = *((long long *)(*stack)->content);

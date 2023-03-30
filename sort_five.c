@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sort_five.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: truangsi <truangsi@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/03/29 15:36:55 by truangsi          #+#    #+#             */
+/*   Updated: 2023/03/30 12:23:05 by truangsi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 t_list	*push_to_top_b(t_list **stack, t_swp *pw)
@@ -103,5 +115,6 @@ void	five_numbers(t_list **stack)
 		tmp = tmp->next;
 	}
 	pw.stack_b = ft_lstnew(NULL);
+	// free_stack(tmp);
 	sort_five(stack, &pw);
 }

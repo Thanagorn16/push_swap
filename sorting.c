@@ -9,4 +9,5 @@ void	sort_stack(t_list **stack, int size)
 	else
 		sort_big_stack(stack, size);
 	// printl(stack);
+	// free_stack((*stack));
 }
