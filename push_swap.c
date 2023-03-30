@@ -16,10 +16,7 @@ long long	*create_arr(char **av, int sz)
 		{
 			pswp.set = ft_split(av[pswp.i++], ' ');
 			if (!pswp.set)
-			{
-				// double_free_int(pswp.arr);
 				exit(0) ;
-			}
 		}
 		else
 			break ;
@@ -45,9 +42,8 @@ void	do_sort(long long *arr, int sz)
 		i++;
 	}
 	sort_stack(&stack, sz);
-	free_stack(tmp);
-	// free_stack(stack);
-	// double_free_int(arr);
+	free_stack(stack);
+	free(arr);
 }
 
 int main(int ac, char **av)

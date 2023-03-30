@@ -37,16 +37,6 @@ void	is_err()
 	exit(0);
 }
 
-void	double_free_int(long long *arr)
-{
-	int	i;
-
-	i = 0;
-	while (arr[i])
-		free((void *)arr[i++]);
-	free(arr);
-}
-
 void	free_stack(t_list *stack)
 {
 	t_list	*tmp;
@@ -58,14 +48,3 @@ void	free_stack(t_list *stack)
 		free(tmp);
 	}
 }
-// void	free_stack(t_list **stack)
-// {
-// 	t_list	*tmp;
-
-// 	while ((*stack))
-// 	{
-// 		tmp = (*stack);
-// 		(*stack) = (*stack)->next;
-// 		free(tmp);
-// 	}
-// }

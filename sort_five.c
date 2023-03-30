@@ -6,7 +6,7 @@
 /*   By: truangsi <truangsi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 15:36:55 by truangsi          #+#    #+#             */
-/*   Updated: 2023/03/30 12:23:05 by truangsi         ###   ########.fr       */
+/*   Updated: 2023/03/30 20:02:31 by truangsi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,16 +92,19 @@ void	sort_five(t_list **stack, t_swp *pw)
 	two_number(&pw->stack_b);
 	pa_action(stack, &pw->stack_b);
 	pa_action(stack, &pw->stack_b);
+	free(pw->stack_b);
 }
 
 void	five_numbers(t_list **stack)
 {
 	int			i;
 	t_list		*tmp;
+	t_list		*head_tmp;
 	t_swp		pw;
 
 	i = 1;
 	tmp = sort_copied_stack(stack);
+	head_tmp = tmp;
 	pw.head = (*stack);
 	while (tmp) // set index to original stack
 	{
@@ -115,6 +118,7 @@ void	five_numbers(t_list **stack)
 		tmp = tmp->next;
 	}
 	pw.stack_b = ft_lstnew(NULL);
-	// free_stack(tmp);
+	tmp = head_tmp;
+	free_stack(tmp);
 	sort_five(stack, &pw);
 }

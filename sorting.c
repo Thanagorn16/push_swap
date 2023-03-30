@@ -8,6 +8,4 @@ void	sort_stack(t_list **stack, int size)
 		five_numbers(stack);
 	else
 		sort_big_stack(stack, size);
-	// printl(stack);
-	// free_stack((*stack));
 }
