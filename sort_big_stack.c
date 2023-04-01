@@ -1,35 +1,21 @@
 #include "push_swap.h"
 
-void	sort_radix(t_list **stack, int size)
+void	do_radix(t_list **stack, int size, int max_bits, t_list *stack_b)
 {
-	int	i;
-	int	j;
-	int	max_num;
-	int	max_bits;
 	int	size_b;
-	t_list	*stack_b;
+	t_swp	pw;
 
-	// create stack b
-	stack_b = ft_lstnew(NULL);
-	max_num = size;
-	max_bits = 0;
-	while ((max_num >> max_bits) != 0) // get the maximum bits to be used in order to check from the most right number
-		max_bits++; // In the other word, if the largest bit = 3, the actual bit will have three numbers (ex: 101);
-	i = 0;
-	while (i < max_bits)
+	pw.i = 0;
+	while (pw.i < max_bits)
 	{
-		j = 0;
-		while (j < size)
+		pw.j = 0;
+		while (pw.j < size)
 		{
-			if ((((int)(*stack)->index >> i)&1) == 1)
-			{
+			if ((((int)(*stack)->index >> pw.i)&1) == 1)
 				ra_action(stack);
-			}
 			else
-			{
 				pb_action(stack, &stack_b);
-			}
-			j++;
+			pw.j++;
 		}
 		size_b = ft_lstsize(stack_b);
 		while (size_b > 1)
@@ -37,39 +23,45 @@ void	sort_radix(t_list **stack, int size)
 			pa_action(stack, &stack_b);
 			size_b--;
 		}
-		i++;
+		pw.i++;
 	}
-	// printl(stack);
-	// printf("max_bits:%d\n", max_bits);
-	// exit(0);
-	// stack = NULL;
+	free(stack_b);
+}
+
+void	sort_radix(t_list **stack, int size)
+{
+	int	max_num;
+	int	max_bits;
+	t_list	*stack_b;
+
+	stack_b = ft_lstnew(NULL);
+	max_num = size;
+	max_bits = 0;
+	while ((max_num >> max_bits) != 0) // get the maximum bits to be used in order to check from the most right number
+		max_bits++; // In the other word, if the largest bit = 3, the actual bit will have three numbers (ex: 101);
+	do_radix(stack, size, max_bits, stack_b);
 }
 
 void	sort_big_stack(t_list **stack, int size)
 {
-	int			i;
-	t_list		*tmp;
-	t_list		*head_tmp;
-	t_list		*head;
+	t_swp		pw;
 
-	i = 0;
-	tmp = sort_copied_stack(stack);
-	head = (*stack);
-	head_tmp = tmp;
-	while (tmp) // set index to original stack
+	pw.i = 0;
+	pw.tmp = sort_copied_stack(stack);
+	pw.head = (*stack);
+	pw.head_tmp = pw.tmp;
+	while (pw.tmp) // set index to original stack
 	{
 		while ((*stack))
 		{
-			if (*((long long *)(*stack)->content) == (long long)tmp->content)
-			{
-				(*stack)->index = i++;
-				// printf("print stack:%lld / index:%d\n", *((long long *)(*stack)->content), (int)(*stack)->index);
-			}
+			if (*((long long *)(*stack)->content) == (long long)pw.tmp->content)
+				(*stack)->index = pw.i++;
 			(*stack) = (*stack)->next;
 		}
-		(*stack) = head;
-		tmp = tmp->next;
+		(*stack) = pw.head;
+		pw.tmp = pw.tmp->next;
 	}
-	tmp = head_tmp;
+	pw.tmp = pw.head_tmp;
+	free_stack(pw.tmp);
 	sort_radix(stack, size);
 }

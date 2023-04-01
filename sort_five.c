@@ -6,7 +6,7 @@
 /*   By: truangsi <truangsi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 15:36:55 by truangsi          #+#    #+#             */
-/*   Updated: 2023/03/30 20:02:31 by truangsi         ###   ########.fr       */
+/*   Updated: 2023/04/01 11:42:09 by truangsi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,28 +97,25 @@ void	sort_five(t_list **stack, t_swp *pw)
 
 void	five_numbers(t_list **stack)
 {
-	int			i;
-	t_list		*tmp;
-	t_list		*head_tmp;
 	t_swp		pw;
 
-	i = 1;
-	tmp = sort_copied_stack(stack);
-	head_tmp = tmp;
+	pw.i = 1;
+	pw.tmp = sort_copied_stack(stack);
+	pw.head_tmp = pw.tmp;
 	pw.head = (*stack);
-	while (tmp) // set index to original stack
+	while (pw.tmp) // set index to original stack
 	{
 		while ((*stack))
 		{
-			if (*((long long *)(*stack)->content) == (long long)tmp->content)
-				(*stack)->index = i++;
+			if (*((long long *)(*stack)->content) == (long long)pw.tmp->content)
+				(*stack)->index = pw.i++;
 			(*stack) = (*stack)->next;
 		}
 		(*stack) = pw.head;
-		tmp = tmp->next;
+		pw.tmp = pw.tmp->next;
 	}
 	pw.stack_b = ft_lstnew(NULL);
-	tmp = head_tmp;
-	free_stack(tmp);
+	pw.tmp = pw.head_tmp;
+	free_stack(pw.tmp);
 	sort_five(stack, &pw);
 }

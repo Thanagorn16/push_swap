@@ -44,6 +44,8 @@ typedef struct s_swp
 	// struct s_list	*next;
 	// struct s_list	*prev;
 	t_list			*head;
+	t_list			*head_tmp;
+	t_list			*tmp;
 	t_list			*stack_b;
 	t_list			*lst_node;
 	t_list			*top_stack;
