@@ -6,7 +6,7 @@
 /*   By: truangsi <truangsi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/01 15:04:31 by truangsi          #+#    #+#             */
-/*   Updated: 2023/04/01 15:14:38 by truangsi         ###   ########.fr       */
+/*   Updated: 2023/04/01 17:20:59 by truangsi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ void	check_operator(const char *str)
 long long	ft_atoi(const char *str)
 {
 	long long	temp;
-	int	nev;
-	int	i;
+	int			nev;
+	int			i;
 
 	i = 0;
 	nev = 0;
