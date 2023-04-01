@@ -6,7 +6,7 @@
 /*   By: truangsi <truangsi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 15:36:55 by truangsi          #+#    #+#             */
-/*   Updated: 2023/04/01 13:02:57 by truangsi         ###   ########.fr       */
+/*   Updated: 2023/04/01 15:25:45 by truangsi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ void	sort_five(t_list **stack, t_swp *pw)
 	pw->lst_node = ft_lstlast((*stack));
 	process_sort_five(stack, pw);
 	three_numbers(stack);
-	two_number(&pw->stack_b);
+	two_number_b(&pw->stack_b);
 	pa_action(stack, &pw->stack_b);
 	pa_action(stack, &pw->stack_b);
 	free(pw->stack_b);

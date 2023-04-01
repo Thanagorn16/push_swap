@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   libft.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: truangsi <truangsi@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/04/01 15:04:14 by truangsi          #+#    #+#             */
+/*   Updated: 2023/04/01 15:14:50 by truangsi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef LIBFT_H
 # define LIBFT_H
 
@@ -15,11 +27,9 @@ typedef struct s_split
 
 void	ft_putstr_fd(char *s, int fd);
 void	double_free(char **arr);
-// void	ft_lstadd_back(t_list **lst, t_list *new);
 char	*ft_strdup(const char *str);
 char	**ft_split(char const *s, char c);
 long long	ft_atoi(const char *str);
 size_t	ft_strlen(const char *str);
-// t_list	*ft_lstnew(void *content);
 
 #endif

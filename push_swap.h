@@ -6,7 +6,7 @@
 /*   By: truangsi <truangsi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/01 13:06:22 by truangsi          #+#    #+#             */
-/*   Updated: 2023/04/01 14:48:16 by truangsi         ###   ########.fr       */
+/*   Updated: 2023/04/01 15:27:57 by truangsi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ void	check_asceding_order(long long *arr, int size);
 void	check_max_min(long long *arr, int size);
 void	ft_lstadd_back(t_list **lst, t_list *new);
 void	two_number(t_list **stack);
+void	two_number_b(t_list **stack);
 void	three_numbers(t_list **stack);
 void	five_numbers(t_list **stack);
 void	sort_big_stack(t_list **stack, int size);
