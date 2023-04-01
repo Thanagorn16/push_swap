@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   rr_actions.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: truangsi <truangsi@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/04/01 14:53:31 by truangsi          #+#    #+#             */
+/*   Updated: 2023/04/01 14:53:32 by truangsi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "action.h"
 
 void	rra_action(t_list **stack)
@@ -8,10 +20,9 @@ void	rra_action(t_list **stack)
 	tmp = (*stack);
 	(*stack) = ft_lstlast((*stack));
 	(*stack)->next = tmp;
-	// set prev for last node and head
 	(*stack)->prev = NULL;
 	tmp->prev = (*stack);
-	while (tmp->next != (*stack)) // set prev and move the node to set new last node and its null
+	while (tmp->next != (*stack))
 	{
 		tmp_prev = tmp;
 		tmp = tmp->next;
@@ -29,10 +40,9 @@ void	rrb_action(t_list **stack)
 	tmp = (*stack);
 	(*stack) = ft_lstlast((*stack));
 	(*stack)->next = tmp;
-	// set prev for last node and head
 	(*stack)->prev = NULL;
 	tmp->prev = (*stack);
-	while (tmp->next != (*stack)) // set prev and move the node to set new last node and its null
+	while (tmp->next != (*stack))
 	{
 		tmp_prev = tmp;
 		tmp = tmp->next;
@@ -46,15 +56,12 @@ void	rrr_action(t_list **stack_a, t_list **stack_b)
 {
 	t_list	*tmp;
 
-	// stack a
 	tmp = (*stack_a);
 	(*stack_a) = ft_lstlast((*stack_a));
 	(*stack_a)->next = tmp;
 	while (tmp->next != (*stack_a))
 		tmp = tmp->next;
 	tmp->next = NULL;
-
-	// stack b
 	tmp = (*stack_b);
 	(*stack_b) = ft_lstlast((*stack_b));
 	(*stack_b)->next = tmp;
