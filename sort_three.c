@@ -1,24 +1,36 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sort_three.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: truangsi <truangsi@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/04/01 13:21:33 by truangsi          #+#    #+#             */
+/*   Updated: 2023/04/01 13:21:34 by truangsi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 void	sort_three(t_list **stack, long long top, long long mid, long long bot)
 {
-	if (top < mid && mid < bot) //case of ascending order after sort five
+	if (top < mid && mid < bot)
 		return ;
-	if (top > mid && mid > bot) //case 2
+	if (top > mid && mid > bot)
 	{
 		sa_action(stack);
 		rra_action(stack);
 	}
-	else if (top < mid && top < bot) //case 4
+	else if (top < mid && top < bot)
 	{
 		sa_action(stack);
 		ra_action(stack);
 	}
-	else if (top > mid && top > bot) //case 3
+	else if (top > mid && top > bot)
 		ra_action(stack);
-	else if (top > mid && top < bot) // case 1
+	else if (top > mid && top < bot)
 		sa_action(stack);
-	else if (top < mid && top > bot) //case 5
+	else if (top < mid && top > bot)
 		rra_action(stack);
 }
 

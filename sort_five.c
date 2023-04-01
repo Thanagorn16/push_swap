@@ -6,7 +6,7 @@
 /*   By: truangsi <truangsi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 15:36:55 by truangsi          #+#    #+#             */
-/*   Updated: 2023/04/01 11:42:09 by truangsi         ###   ########.fr       */
+/*   Updated: 2023/04/01 13:02:57 by truangsi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ t_list	*push_to_top_b(t_list **stack, t_swp *pw)
 	t_list	*top_stack;
 
 	top_stack = NULL;
-	if (ft_lstsize(pw->stack_b) == 1) //reset stack to be used for the first action
+	if (ft_lstsize(pw->stack_b) == 1)
 		(*stack) = pw->head;
 	while (pw->top > 1 && pw->bot != 1 && pw->top != 1)
 	{
@@ -38,14 +38,14 @@ t_list	*push_to_b(t_list **stack, t_swp *pw)
 	bot_stack = NULL;
 	if (pw->bot < pw->top)
 	{
-		if (ft_lstsize(pw->stack_b) == 1) //reset stack to be used for the first action
+		if (ft_lstsize(pw->stack_b) == 1)
 			(*stack) = pw->head;
 		while (pw->bot > 0)
 		{
 			rra_action(stack);
 			pw->bot--;
 		}
-		bot_stack = ft_lstlast((*stack)); // keep track after the actions
+		bot_stack = ft_lstlast((*stack));
 		pb_action(stack, &pw->stack_b);
 		return (bot_stack);
 	}
@@ -62,19 +62,19 @@ void	process_sort_five(t_list **stack, t_swp *pw)
 		pw->top = 0;
 		pw->bot = 0;
 		pw->top = search_top(stack);
-		if (pw->bot_stack) // continue stack from the tracker
-			(*stack) = pw->top_stack; //* to keep track of the stack if it went to the top < bot first
+		if (pw->bot_stack)
+			(*stack) = pw->top_stack;
 		else
 			(*stack) = pw->lst_node;
-		pw->bot = search_bot(ft_lstlast((*stack))); //? better than the above?
-		if (pw->bot < pw->top || pw->bot == pw->top) // pushing to stack b
+		pw->bot = search_bot(ft_lstlast((*stack)));
+		if (pw->bot < pw->top || pw->bot == pw->top)
 		{
-			pw->bot_stack = push_to_b(stack, pw); //keep track after pushing
+			pw->bot_stack = push_to_b(stack, pw);
 			pw->top_stack = ft_lstfront(pw->bot_stack);
 		}
 		else if (pw->top < pw->bot)
 		{
-			(*stack) = pw->top_stack; // need this is since we have to keep track of the stack if it get into bot < top first
+			(*stack) = pw->top_stack;
 			pw->top_stack = push_to_b(stack, pw);
 			pw->bot_stack = ft_lstlast(pw->top_stack);
 		}
@@ -103,7 +103,7 @@ void	five_numbers(t_list **stack)
 	pw.tmp = sort_copied_stack(stack);
 	pw.head_tmp = pw.tmp;
 	pw.head = (*stack);
-	while (pw.tmp) // set index to original stack
+	while (pw.tmp)
 	{
 		while ((*stack))
 		{

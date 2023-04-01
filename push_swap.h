@@ -1,48 +1,41 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: truangsi <truangsi@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/04/01 13:06:22 by truangsi          #+#    #+#             */
+/*   Updated: 2023/04/01 14:48:16 by truangsi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-#include <stdio.h>
-#include <unistd.h>
-#include "libft/libft.h"
-#include "actions/action.h"
+# include <stdio.h>
+# include <unistd.h>
+# include "libft/libft.h"
+# include "actions/action.h"
 
 typedef struct s_list
 {
-	void		*content;
-	int			index;
+	void			*content;
+	int				index;
 	struct s_list	*next;
 	struct s_list	*prev;
 }	t_list;
 
-// typedef struct s_list
-// {
-// 	void			*content;
-// 	int				index;
-// 	int				i;
-// 	int				j;
-// 	int				k;
-// 	int				size;
-// 	long long		*arr; // keep the value in heap (remain in the memory)
-// 	char			**set;
-// 	struct s_list	*next;
-// 	struct s_list	*prev;
-// 	t_swap			*head;
-// 	t_swap			*stack_b;
-// }	t_list;
 typedef struct s_swp
 {
-	// void			*content;
-	// int				index;
 	int				i;
 	int				j;
 	int				k;
 	int				size;
 	int				top;
 	int				bot;
-	long long		*arr; // keep the value in heap (remain in the memory)
+	long long		*arr;
 	char			**set;
-	// struct s_list	*next;
-	// struct s_list	*prev;
 	t_list			*head;
 	t_list			*head_tmp;
 	t_list			*tmp;
@@ -52,10 +45,7 @@ typedef struct s_swp
 	t_list			*bot_stack;
 }	t_swp;
 
-void	printr(t_list **stack);
-void	printc(t_list **stack);
-void	printl(t_list **stack);
-void	is_err();
+void	is_err(void);
 void	check_repeated_num(long long *arr, int size);
 void	check_asceding_order(long long *arr, int size);
 void	check_max_min(long long *arr, int size);
@@ -63,7 +53,7 @@ void	ft_lstadd_back(t_list **lst, t_list *new);
 void	two_number(t_list **stack);
 void	three_numbers(t_list **stack);
 void	five_numbers(t_list **stack);
-void	sort_big_stack();
+void	sort_big_stack(t_list **stack, int size);
 void	sort_stack(t_list **stack, int size);
 void	sort_tmp(t_list *tmp);
 void	double_free_int(long long *arr);
@@ -77,4 +67,4 @@ t_list	*ft_lstlast(t_list *lst);
 t_list	*ft_lstfront(t_list *lst);
 t_list	*sort_copied_stack(t_list **stack);
 
-# endif
+#endif

@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sort_big_stack.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: truangsi <truangsi@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/04/01 13:06:26 by truangsi          #+#    #+#             */
+/*   Updated: 2023/04/01 13:19:31 by truangsi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 void	do_radix(t_list **stack, int size, int max_bits, t_list *stack_b)
 {
-	int	size_b;
+	int		size_b;
 	t_swp	pw;
 
 	pw.i = 0;
@@ -11,7 +23,7 @@ void	do_radix(t_list **stack, int size, int max_bits, t_list *stack_b)
 		pw.j = 0;
 		while (pw.j < size)
 		{
-			if ((((int)(*stack)->index >> pw.i)&1) == 1)
+			if ((((int)(*stack)->index >> pw.i) & 1) == 1)
 				ra_action(stack);
 			else
 				pb_action(stack, &stack_b);
@@ -30,15 +42,15 @@ void	do_radix(t_list **stack, int size, int max_bits, t_list *stack_b)
 
 void	sort_radix(t_list **stack, int size)
 {
-	int	max_num;
-	int	max_bits;
+	int		max_num;
+	int		max_bits;
 	t_list	*stack_b;
 
 	stack_b = ft_lstnew(NULL);
 	max_num = size;
 	max_bits = 0;
-	while ((max_num >> max_bits) != 0) // get the maximum bits to be used in order to check from the most right number
-		max_bits++; // In the other word, if the largest bit = 3, the actual bit will have three numbers (ex: 101);
+	while ((max_num >> max_bits) != 0)
+		max_bits++;
 	do_radix(stack, size, max_bits, stack_b);
 }
 
@@ -50,7 +62,7 @@ void	sort_big_stack(t_list **stack, int size)
 	pw.tmp = sort_copied_stack(stack);
 	pw.head = (*stack);
 	pw.head_tmp = pw.tmp;
-	while (pw.tmp) // set index to original stack
+	while (pw.tmp)
 	{
 		while ((*stack))
 		{

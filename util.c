@@ -1,37 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   util.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: truangsi <truangsi@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/04/01 13:06:52 by truangsi          #+#    #+#             */
+/*   Updated: 2023/04/01 14:48:07 by truangsi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
-void	printc(t_list **stack)
-{
-	if ((*stack) == NULL)
-	{
-		printf("out of node\n");
-		return ;
-	}
-	printf("here:%lld\n", *((long long *)(*stack)->content));
-}
-void	printl(t_list **stack)
-{
-	while ((*stack)->content)
-	{
-		printf("print stack:%lld / index:%d\n", *((long long *)(*stack)->content), (int)(*stack)->index);
-		(*stack) = (*stack)->next;
-		if ((*stack) == NULL)
-			break ;
-	}
-}
-
-void	printr(t_list **stack)
-{
-	while ((*stack)->content)
-	{
-		printf("print prev:%lld / index:%d\n", *((long long *)(*stack)->content), (int)(*stack)->index);
-		(*stack) = (*stack)->prev;
-		if ((*stack) == NULL)
-			break ;
-	}
-}
-
-void	is_err()
+void	is_err(void)
 {
 	ft_putstr_fd("Error\n", 2);
 	exit(0);
