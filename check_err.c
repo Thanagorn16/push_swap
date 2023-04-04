@@ -6,7 +6,7 @@
 /*   By: truangsi <truangsi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/01 13:05:43 by truangsi          #+#    #+#             */
-/*   Updated: 2023/04/01 14:43:54 by truangsi         ###   ########.fr       */
+/*   Updated: 2023/04/04 12:17:47 by truangsi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,7 +113,7 @@ void	check_max_min(long long *arr, int size)
 	i = 0;
 	while (i < size)
 	{
-		if (arr[i] > 2147483647 || arr[i] < -2147483648)
+		if (arr[i] > 2147483647 || arr[i] < -2147483647)
 			is_err();
 		i++;
 	}

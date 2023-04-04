@@ -6,7 +6,7 @@
 /*   By: truangsi <truangsi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/01 13:06:26 by truangsi          #+#    #+#             */
-/*   Updated: 2023/04/01 13:19:31 by truangsi         ###   ########.fr       */
+/*   Updated: 2023/04/04 12:14:10 by truangsi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	sort_radix(t_list **stack, int size)
 	t_list	*stack_b;
 
 	stack_b = ft_lstnew(NULL);
-	max_num = size;
+	max_num = size - 1;
 	max_bits = 0;
 	while ((max_num >> max_bits) != 0)
 		max_bits++;
